@@ -1,0 +1,12 @@
+Adam Heller - Assignment 4
+
+	p->q <=> q'->p'
+	p' v q <=> q'->p' Imp
+	p' v q <=> q v p' Imp
+	p' v q <=> p' v q Comm
+
+
+
+	(p->r) ^ (q->r) <=> (p v q) -> r
+	(p' v r) ^ (q' v r) <=> (p v r)' v r imp x3
+	
