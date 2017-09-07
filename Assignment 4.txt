@@ -8,5 +8,9 @@ Adam Heller - Assignment 4
 
 
 	(p->r) ^ (q->r) <=> (p v q) -> r
-	(p' v r) ^ (q' v r) <=> (p v r)' v r imp x3
+	(p' v r) ^ (q' v r) <=> (p v r)' v r ------------imp x3
+	(p' v r) ^ (q' v r) <=> (p' ^ q') v r -----------deMor
+	(p' v r) ^ (q' v r) <=> (p' v r) ^ (q' v r) -----dist
 	
+	1. (q ^ r) -> (p v r) <=> (q -> r')' -> (p v r)
+	2. [(r' ^ q) v (r' ^ q)]' <=> (q ^ r)'
