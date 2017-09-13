@@ -2,4 +2,51 @@ Adam Heller - Assignment 5
 
 
 
-		#18 - 
+		#18 - L(x): x is a lion
+		      R(x): x roars
+		      P(x): x is a predator
+		      Z(x): x is a zebra
+		      E(x,y): x eats y
+		      
+		      a. All lions are predators. 
+		      	- Ax(L(x) -> P(x))
+		      b. Some lions roar.
+		      	- Ex(L(x) -> R(x))
+		      c. Only lions roar.
+		      	- Ax(L(x) v R(x)')
+		      d. Some lions eat all zebras.
+		      	- ExAy(E(x,y))
+		      e. All lions eat all zebras.
+		      	- AxAy(E(x,y))
+			
+			
+		#25 - L(x,y): x loves y
+		      H(x): x is handsome
+		      M(x): x is a man
+		      P(x): x is pretty
+		      W(x): x is a woman
+		      j: John
+		      k: Kathy
+		      
+		      a. H(j) ^ L(k,j)
+		      	- John is handsome and Kathy loves John.
+		      b. Ax[M(x) -> H(x)]
+		      	- All men are handsome.
+		      c. Ax(W(x) -> Ay[L(x,y) -> M(y) ^ H(y)])
+		      	- All women love men who are handsome.
+		      d. Ex[M(x) ^ H(x) ^ L(x,k)]
+		      	- Some handsome men love Kathy.
+		      e. Ex(W(x) ^ P(x) ^ Ay[L(x,y) -> H(y) ^ M(y)]
+		      	- Some pretty women love all handsome men.
+		      f. Ax[W(x) ^ P(x) -> L(j,x)]
+		      	- John loves all pretty women.
+			
+			
+		#34 - a. ExA(x) ^ ExB(x) -> Ex[A(x) ^ B(x)]
+			- There exists an x that is both B and A.
+		      b. AxEyP(x,y) -> ExAyP(x,y)
+		      	- If all x's and some y's are P, then some x's and all y's are P.
+		      c. Ax[P(x) -> Q(x)] -> [ExP(x) -> AxQ(x)]
+		        - For all of x where P implies Q, there exists an x where P implies Q.
+		      d. Ax[A(x)]' <-> [AxA(x)]'
+		        - All x's that aren't A are equal to no x's that aren't A
