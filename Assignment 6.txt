@@ -1,0 +1,32 @@
+package hello.world.app;
+import java.util.Scanner;
+
+public class HelloWorldApp {
+    
+    public static void main(String[] args) {      
+        do {
+            System.out.print("Enter an integer.\n");
+            
+            char num;
+
+            Scanner in =  new Scanner(System.in);
+
+            num = in.next().charAt(0);
+            if (num == 'q')
+                System.exit(0);
+            else {
+                System.out.print("\n");
+                String num1 = Character.toString(num);
+                try {
+                    int x = Integer.parseInt(num1);
+                    if (x % 2 == 0)
+                        System.out.print("This integer is even.\n");
+                    if (x % 2 != 0)
+                        System.out.print("This integer is odd.\n");
+                } catch(NumberFormatException e) {
+                    System.out.print("Input invalid.\n");
+                }
+            }
+        } while(true);
+    }   
+}
