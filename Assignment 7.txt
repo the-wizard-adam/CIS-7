@@ -1,0 +1,56 @@
+Adam Heller - Assignment 7
+
+
+	1. Prove: If n = 25, 100, 169, then n is a perfect square and is the sum of 
+		two perfect squares.
+
+		ANS: 	n = 25
+		     	sqrt(25) = 5
+		     	25 = 9 + 16
+		     	sqrt(9) = 3
+		     	sqrt(16) = 4
+                     
+		     	n = 100
+		     	sqrt(100) = 10
+		     	100 = 36 + 64
+		     	sqrt(36) = 6
+		     	sqrt(64) = 8
+		
+		     	n = 169
+		     	sqrt(169) = 13
+		     	169 = 144 + 25
+		     	sqrt(144) = 12
+	             	sqrt(25) = 5
+	
+		     	true, proof by exhaustion 
+
+
+	2. Prove: The sum of two odd integers is even. Hint: By definition, even
+		integers can be expressed as 2n, thus odd integers can be expressed as 2n + 1
+
+		ANS: 	x = 2a + 1
+		     	y = 2b + 1
+		     	x + y 			is even
+		     	(2a + 1)(2b + 1) 	is even
+		     	4ab + 2a + 2b + 1 	is even
+		     	2(2ab + a + b) + 1	is even
+		     	(2ab + a + b) = c
+		     	2c + 1			is even -> false
+
+	
+
+	3. Prove: The sum of an even integer and it's square is even.
+	
+		ANS:	2n + (2n)^2		is even
+			2n + 4n^2		is even
+			2(n + 2n^2)		is even
+			n + 2n^2 = a		
+			2a			is even -> true
+
+
+	4. Prove by Contradiction: If n is squared is odd, the n is odd.
+
+		ANS:	n = 2a + 1
+			n^2	
+		     		     
+			
