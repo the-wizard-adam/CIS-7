@@ -31,12 +31,11 @@ Adam Heller - Assignment 7
 		ANS: 	x = 2a + 1
 		     	y = 2b + 1
 		     	x + y 			is even
-		     	(2a + 1)(2b + 1) 	is even
-		     	4ab + 2a + 2b + 1 	is even
-		     	2(2ab + a + b) + 1	is even
-		     	(2ab + a + b) = c
-		     	2c + 1			is even -> false
-
+		     	(2a + 1) + (2b + 1) 	is even
+		     	2a + 2b + 2 		is even
+		     	2(a + b + 1)		is even
+			a + b + 1 = c	
+			2c			is even -> true
 	
 
 	3. Prove: The sum of an even integer and it's square is even.
@@ -48,9 +47,8 @@ Adam Heller - Assignment 7
 			2a			is even -> true
 
 
-	4. Prove by Contradiction: If n is squared is odd, the n is odd.
+	4. Prove by Contradiction: If n squared is odd, then n is odd.
 
-		ANS:	n = 2a + 1
-			n^2	
+		ANS: 	n squared cannot be odd.
 		     		     
 			
