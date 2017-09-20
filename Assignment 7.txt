@@ -49,6 +49,12 @@ Adam Heller - Assignment 7
 
 	4. Prove by Contradiction: If n squared is odd, then n is odd.
 
-		ANS: 	n squared cannot be odd.
+		ANS: 	n squared is odd, by contradiction -> n squared is not odd.
+			n^2 = 2a		not odd
+			n^2 = (2a)^2		not odd
+			n^2 = 4a^2		not odd
+			n^2 = 2(2a^2)		not odd
+			2a^2 = b
+			n^2 = 2b		not odd -> true
 		     		     
 			
