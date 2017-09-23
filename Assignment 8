@@ -1,56 +1,36 @@
 #include <iostream>
+
 using namespace std;
 
-int main() {
-    int num, 
-        userGuess, 
-        result = 0;
-        
-    cout << "Enter a number." << endl;
-    cin >> num;
-    cout << num << endl;
-    cout << endl 
-         << "How many prime numbers are between "
-         << num
-         << " and 0?" << endl;
-    cin >> userGuess;
-    cout << userGuess << endl;
-    cout << "===============================" << endl;
+bool isPrime(int);
+
+int main()
+{
+    int num = 1000;
+    int count = 0;
+    bool numArray[num] = {false};
     
-    for (int i = num; i > 0; i--) {
-        if ((i == 2) || (i == 3) || (i == 5) || (i == 7)) {
-            result++;
-            cout << i << " - prime." << endl;
+    for (int i = num; i > 1; i--) {
+        numArray[i] = isPrime(i);
+        if (numArray[i] == true) {
+            count++;
         }
-        else if (i == 1) {
-            //cout << i << " - not prime." << endl;
-        }
-        else if (i % 2 == 0){
-            //cout << i << " - not prime." << endl;
-        }
-        else if (i % 3 == 0){
-            //cout << i << " - not prime." << endl;
-        }
-        else if (i % 5 == 0){
-            //cout << i << " - not prime." << endl;
-        }
-        else if (i % 7 == 0){
-            //cout << i << " - not prime." << endl;
-        }
-        else{
-            cout << i << " - prime." << endl;
-            result++;
+        else {
         }
     }
-    cout << "===============================" << endl;
-    cout << result << endl;
     
-    if (userGuess == result) {
-        cout << "You guessed " << userGuess << ". That is correct." << endl;
-    }
-    else {
-        cout << "You guessed " << userGuess << ". That is incorrect." << endl;
-    }     
-         
+    cout << count;
+
     return 0;
+}
+
+bool isPrime(int i) {
+    for (int j = (i-1); j > 1; j--) {
+        if (i % j == 0) {
+            return false;
+        }
+        else {
+        }
+    }
+    return true;
 }
