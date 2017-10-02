@@ -19,8 +19,8 @@ int main()
         if (findFactor(i, num) == 0) {
         }
         else {
-            cout << i << " & " << findFactor(i, num) << endl;
             cout << "   ";
+            cout << i << " & " << findFactor(i, num) << endl;
             num = findFactor(i, num);
             i = 1;
         }
@@ -37,6 +37,21 @@ int findFactor (int i, int num) {
         return 0;
     }
 }
+
+/* OUTPUT
+Enter a number greater than 1:                                                                                                                                      
+10250                                                                                                                                                               
+   2 & 5125                                                                                                                                                         
+   5 & 1025                                                                                                                                                         
+   5 & 205                                                                                                                                                          
+   5 & 41
+*/   
+ 
+
+
+
+
+
 
 
 
