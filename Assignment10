@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int num;
+    do {
+        cout << "Enter a number greater than 1: " << endl;
+        cin >> num;
+        if (num <= 1) {
+            cout << "Invalid input." << endl;
+        }
+    } while (num <= 1);
+    
+    for (int i = 2; i < num; i++) {
+        if (i.findFactor == 0) {
+        }
+        else {
+            cout << i << " & " << i.findFactor << endl;
+            cout << "   ";
+            i = i.findFactor;
+        }
+    }
+
+    return 0;
+}
+
+int findFactor (int i) {
+    if (num % i == 0) {
+        return num / i;
+    }
+    else {
+        return 0;
+    }
+}
