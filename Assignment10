@@ -2,6 +2,8 @@
 
 using namespace std;
 
+int findFactor(int, int);
+
 int main()
 {
     int num;
@@ -14,19 +16,20 @@ int main()
     } while (num <= 1);
     
     for (int i = 2; i < num; i++) {
-        if (i.findFactor == 0) {
+        if (findFactor(i, num) == 0) {
         }
         else {
-            cout << i << " & " << i.findFactor << endl;
+            cout << i << " & " << findFactor(i, num) << endl;
             cout << "   ";
-            i = i.findFactor;
+            num = findFactor(i, num);
+            i = 1;
         }
     }
 
     return 0;
 }
 
-int findFactor (int i) {
+int findFactor (int i, int num) {
     if (num % i == 0) {
         return num / i;
     }
@@ -34,3 +37,6 @@ int findFactor (int i) {
         return 0;
     }
 }
+
+
+
