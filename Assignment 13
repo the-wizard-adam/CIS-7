@@ -1,0 +1,37 @@
+#include <iostream>
+#include <stack>
+#include <vector>
+
+using namespace std;
+
+void move(int, stack<int>, stack<int>, stack<int>);
+void display(int, stack<int>, stack<int>, stack<int>);
+
+int main()
+{
+    std::vector<char> a, b, c;
+    int discNum;
+    
+    std::cout << "Welcome to Towers of Hanoi 2017, please input an integer between 1 and 100: ";
+    do {
+        std::cin >> discNum;
+        if (discNum < 1 || discNum > 100) {
+            std::cout << "Invalid input. ";
+        }
+    } while(discNum < 1 || discNum > 100);
+    
+    for (int i = discNum; i > 0; i--) a.push(i);
+    
+    move(discNum, a, b, c);
+
+    return 0;
+}
+
+void move(int n, stack<int> a, stack<int> b, stack<int> c) {
+    c.push(a.top());
+    a.pop();
+}
+
+void display(int, stack<int> a, stack<int> b, stack<int> c) {
+    for (int i = a.size; i > 0; i--) 
+}
