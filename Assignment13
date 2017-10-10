@@ -4,12 +4,11 @@
 
 using namespace std;
 
-void move(int, stack<int>, stack<int>, stack<int>);
-void display(int, stack<int>, stack<int>, stack<int>);
+void move(int, vector<int>, vector<int>, vector<int>);
+void display(int, vector<int>, vector<int>, vector<int>);
 
 int main()
 {
-    std::vector<char> a, b, c;
     int discNum;
     
     std::cout << "Welcome to Towers of Hanoi 2017, please input an integer between 1 and 100: ";
@@ -20,18 +19,25 @@ int main()
         }
     } while(discNum < 1 || discNum > 100);
     
-    for (int i = discNum; i > 0; i--) a.push(i);
+    vector<char> a(discNum), b(discNum), c(discNum);
     
-    move(discNum, a, b, c);
+    for (int i = 1; i < discNum; i++) a.at(i) = i;
+    for (int i = 1; i < discNum; i++) {
+        b.at(i) = '_';
+        c.at(i) = '_';
+    }
+    
+    
+    
+    //move(discNum, a, b, c);
 
     return 0;
 }
 
-void move(int n, stack<int> a, stack<int> b, stack<int> c) {
-    c.push(a.top());
-    a.pop();
+void move(int n, vector<int> a, vector<int> b, vector<int> c) {
+    
 }
 
-void display(int, stack<int> a, stack<int> b, stack<int> c) {
-    for (int i = a.size; i > 0; i--) 
+void display(int, vector<int> a, vector<int> b, vector<int> c) {
+    
 }
