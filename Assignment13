@@ -1,11 +1,12 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+#include <stdio.h>
 
 using namespace std;
 
-void move(int, vector<int>, vector<int>, vector<int>);
-void display(int, vector<int>, vector<int>, vector<int>);
+void move(int, vector<char>, vector<char>, vector<char>);
+void display(int, vector<char>, vector<char>, vector<char>);
 
 int main()
 {
@@ -21,23 +22,29 @@ int main()
     
     vector<char> a(discNum), b(discNum), c(discNum);
     
-    for (int i = 1; i < discNum; i++) a.at(i) = i;
     for (int i = 1; i < discNum; i++) {
-        b.at(i) = '_';
-        c.at(i) = '_';
+        a[i] = (char)i;
+        cout << a[i];
+    }
+    for (int i = 1; i < discNum; i++) {
+        b[i] = '_';
+        c[i] = '_';
     }
     
-    
+    display(discNum, a, b, c);
     
     //move(discNum, a, b, c);
 
     return 0;
 }
 
-void move(int n, vector<int> a, vector<int> b, vector<int> c) {
+void move(int n, vector<char> a, vector<char> b, vector<char> c) {
     
 }
 
-void display(int, vector<int> a, vector<int> b, vector<int> c) {
-    
+void display(int n, vector<char> a, vector<char> b, vector<char> c) {
+    std::cout << "A  ";
+    for (vector<char>::const_iterator i = a.begin(); i != a.end(); i++) {
+        std::cout << *i << ' ';
+    }
 }
