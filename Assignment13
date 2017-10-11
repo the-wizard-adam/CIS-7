@@ -1,7 +1,6 @@
 #include <iostream>
 #include <stack>
 #include <vector>
-#include <stdio.h>
 
 using namespace std;
 
@@ -23,8 +22,7 @@ int main()
     vector<char> a(discNum), b(discNum), c(discNum);
     
     for (int i = 1; i < discNum; i++) {
-        a[i] = (char)i;
-        cout << a[i];
+        a[i] = i;
     }
     for (int i = 1; i < discNum; i++) {
         b[i] = '_';
@@ -45,6 +43,6 @@ void move(int n, vector<char> a, vector<char> b, vector<char> c) {
 void display(int n, vector<char> a, vector<char> b, vector<char> c) {
     std::cout << "A  ";
     for (vector<char>::const_iterator i = a.begin(); i != a.end(); i++) {
-        std::cout << *i << ' ';
+        std::cout << static_cast<int>(*i) << ' ';
     }
 }
