@@ -1,11 +1,28 @@
 #include <iostream>
-#include <stack>
 #include <vector>
+#include <iterator>
 
 using namespace std;
 
-void move(int, vector<char>, vector<char>, vector<char>);
-void display(int, vector<char>, vector<char>, vector<char>);
+class Tower {
+        string name;
+        int numberOfDisks;
+    public:
+        Tower(string, int);
+        string disks[3] = {"-","-","-"};
+        void print() {
+            cout << name << "   ";
+            for(auto i = 0; i < numberOfDisks; i++)
+            {
+                cout << disks[i] << " ";
+            }
+        }
+    };
+
+Tower::Tower(string n, int disks) {
+    name = n;
+    numberOfDisks = disks;
+}
 
 int main()
 {
@@ -19,41 +36,25 @@ int main()
         }
     } while(discNum < 1 || discNum > 100);
     
-    vector<char> a(discNum), b(discNum), c(discNum);
+    Tower start("Start",discNum);
+    Tower end("End",discNum);
+    Tower aux("Aux",discNum);
+    //start.disks.size(discNum);
+    //end.disks.size(discNum);
+    //aux.disks.size(discNum);
     
-    for (int i = 1; i < discNum; i++) {
-        a[i] = i;
+    for (int i = discNum-1; i >= 0; i--) {
+        start.disks[i] = i;
     }
-    for (int i = 1; i < discNum; i++) {
-        b[i] = '_';
-        c[i] = '_';
-    }
     
-    display(discNum, a, b, c);
+    start.print();
     
-    //move(discNum, a, b, c);
+    
 
     return 0;
 }
 
-void move(int n, vector<char> a, vector<char> b, vector<char> c) {
-    
-}
 
-void display(int n, vector<char> a, vector<char> b, vector<char> c) {
-    std::cout << endl;
-    std::cout << "A  ";
-    for (vector<char>::const_iterator i = a.begin(); i != a.end(); i++) {
-        std::cout << static_cast<int>(*i) << ' ';
-    }
-    std::cout << endl;
-    std::cout << "B  ";
-    for (vector<char>::const_iterator i = a.begin(); i != a.end(); i++) {
-        std::cout << static_cast<int>(*i) << ' ';
-    }
-    std::cout << endl;
-    std::cout << "C  ";
-    for (vector<char>::const_iterator i = a.begin(); i != a.end(); i++) {
-        std::cout << static_cast<int>(*i) << ' ';
-    }
-}
+
+
+
