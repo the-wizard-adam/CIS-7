@@ -41,7 +41,18 @@ void move(int n, vector<char> a, vector<char> b, vector<char> c) {
 }
 
 void display(int n, vector<char> a, vector<char> b, vector<char> c) {
+    std::cout << endl;
     std::cout << "A  ";
+    for (vector<char>::const_iterator i = a.begin(); i != a.end(); i++) {
+        std::cout << static_cast<int>(*i) << ' ';
+    }
+    std::cout << endl;
+    std::cout << "B  ";
+    for (vector<char>::const_iterator i = a.begin(); i != a.end(); i++) {
+        std::cout << static_cast<int>(*i) << ' ';
+    }
+    std::cout << endl;
+    std::cout << "C  ";
     for (vector<char>::const_iterator i = a.begin(); i != a.end(); i++) {
         std::cout << static_cast<int>(*i) << ' ';
     }
