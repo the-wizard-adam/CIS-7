@@ -1,10 +1,13 @@
 #include <iostream>
-#include <vector>
-#include <iterator>
+//#include <vector>
+//#include <iterator>
 
 using namespace std;
 
-class Tower {
+void move(int, int[], int[], int[]);
+void display(int, int[], int[], int[]);
+
+/*class Tower {
         string name;
         int numberOfDisks;
     public:
@@ -22,39 +25,53 @@ class Tower {
 Tower::Tower(string n, int disks) {
     name = n;
     numberOfDisks = disks;
-}
+}*/
 
 int main()
 {
     int discNum;
     
-    std::cout << "Welcome to Towers of Hanoi 2017, please input an integer between 1 and 100: ";
+    cout << "Welcome to Towers of Hanoi 2017, please input an integer between 1 and 100: ";
     do {
-        std::cin >> discNum;
+        cin >> discNum;
         if (discNum < 1 || discNum > 100) {
-            std::cout << "Invalid input. ";
+            cout << "Invalid input. ";
         }
     } while(discNum < 1 || discNum > 100);
     
-    Tower start("Start",discNum);
-    Tower end("End",discNum);
-    Tower aux("Aux",discNum);
+    int start[discNum], end[discNum], aux[discNum];
+    
+    //Tower start("Start",discNum);
+    //Tower end("End",discNum);
+    //Tower aux("Aux",discNum);
     //start.disks.size(discNum);
     //end.disks.size(discNum);
     //aux.disks.size(discNum);
     
-    for (int i = discNum-1; i >= 0; i--) {
-        start.disks[i] = i;
+    for (int i = discNum; i > 0; i--) {
+        start[i] = i;
+        end[i] = 0;
+        aux[i] = 0;
     }
-    
-    start.print();
-    
     
 
     return 0;
 }
 
+void move(int n, int s[n],int e[n],int a[n]) {
+    //move s to a
+    a[n] = s[n];
+    s[n] = 0;
+    
+}
 
+void display(int n, int s[n], int e[n], int a[n]) {
+    cout << "A: ";
+    for (int i = discNum; i > 0; i--) {
+        if (i == 0) { cout << "_ "; }
+        else { cout << i << " "; }
+    }
+}
 
 
 
