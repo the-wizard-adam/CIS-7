@@ -76,6 +76,12 @@ void hanoi(int n, stack<int> a, stack<int> b, stack<int> c) {
             c.pop();
         }
     }
+    else {
+        hanoi(n-1, a, c, b);
+        b.push(a.top());
+        a.pop();
+        hanoi(n-1, b, a, c);
+    }
     
 }
 
