@@ -1,11 +1,12 @@
 #include <iostream>
+#include <stack>
 //#include <vector>
 //#include <iterator>
 
 using namespace std;
 
-void move(int, int[], int[], int[]);
-void display(int, int[], int[], int[]);
+void hanoi(int, stack<int>, stack<int>, stack<int>);
+//void display(int, int[], int[], int[]);
 
 /*class Tower {
         string name;
@@ -39,39 +40,39 @@ int main()
         }
     } while(discNum < 1 || discNum > 100);
     
-    int start[discNum], end[discNum], aux[discNum];
-    
-    //Tower start("Start",discNum);
-    //Tower end("End",discNum);
-    //Tower aux("Aux",discNum);
-    //start.disks.size(discNum);
-    //end.disks.size(discNum);
-    //aux.disks.size(discNum);
-    
+    stack<int> start, end, aux;
+
     for (int i = discNum; i > 0; i--) {
-        start[i] = i;
-        end[i] = 0;
-        aux[i] = 0;
+        start.push(i);
     }
     
+    hanoi(n, start, end, aux);
 
     return 0;
 }
 
-void move(int n, int s[n],int e[n],int a[n]) {
-    //move s to a
-    a[n] = s[n];
-    s[n] = 0;
+void hanoi(int n, stack<int> a, stack<int> b, stack<int> c) {
+    if (n == 1) {
+        end.push(start.top());
+        while(!a.empty()) {
+            cout << "A: " << a.top() << endl;
+            a.pop();
+        }
+        while(!b.empty()) {
+            cout << "B: " << b.top() << endl;
+            b.pop();
+        }
+        while(!c.empty()) {
+            cout << "C: " << c.top() << endl;
+            c.pop();
+        }
+    }
     
 }
 
-void display(int n, int s[n], int e[n], int a[n]) {
-    cout << "A: ";
-    for (int i = discNum; i > 0; i--) {
-        if (i == 0) { cout << "_ "; }
-        else { cout << i << " "; }
-    }
-}
+/*void display(int n, int s[n], int e[n], int a[n]) {
+   
+}*/
 
 
 
