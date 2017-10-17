@@ -46,24 +46,33 @@ int main()
         start.push(i);
     }
     
-    hanoi(n, start, end, aux);
+    hanoi(discNum, start, end, aux);
 
     return 0;
 }
 
 void hanoi(int n, stack<int> a, stack<int> b, stack<int> c) {
     if (n == 1) {
-        end.push(start.top());
+        b.push(a.top());
+        a.pop();
+        
+        cout << "A: ";
         while(!a.empty()) {
-            cout << "A: " << a.top() << endl;
+            cout << a.top() << " ";
             a.pop();
         }
+        cout << endl;
+        
+        cout << "B: ";
         while(!b.empty()) {
-            cout << "B: " << b.top() << endl;
+            cout << b.top() << " ";
             b.pop();
         }
+        cout << endl;
+        
+        cout << "C: ";
         while(!c.empty()) {
-            cout << "C: " << c.top() << endl;
+            cout << c.top() << " ";
             c.pop();
         }
     }
