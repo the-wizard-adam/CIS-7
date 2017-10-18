@@ -1,0 +1,41 @@
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+int factorial(int, stack<int>);
+
+int main () {
+
+    int num, result;
+
+    num = 3;
+    
+    stack<int> callStack;
+
+    result = factorial(num, callStack);
+    
+    cout << endl << result << endl;
+
+    return 0;
+
+}
+
+int factorial (int n, stack<int> cS) {
+    //cout << n << endl;
+    cS.push(n);
+    cout << cS.top() << endl;
+    if (n <= 1) {
+        //cout << n << endl;
+        cout << cS.top() << endl;
+        cS.pop();
+        return 1;
+    }
+    else {
+        int x = n * factorial(n-1, cS);
+        //cout << n << endl;
+        cout << cS.top() << endl;
+        cS.pop();
+        return x;
+    }
+}
