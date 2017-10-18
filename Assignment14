@@ -25,7 +25,11 @@ int main () {
 int factorial (int n, stack<int> cS) {
     //cout << n << endl;
     cS.push(n);
-    cout << "Fact: " << cS.top() << endl;
+    for (int i = cS.top(); i > 0; i--) {
+        cout << "Fact: " << i << endl;
+    }
+    cout << endl;
+    //cout << "Fact: " << cS.top() << endl;
     if (n <= 1) {
         //cout << n << endl;
         cout << "Fact: " << cS.top() << endl;
@@ -35,7 +39,11 @@ int factorial (int n, stack<int> cS) {
     else {
         int x = n * factorial(n-1, cS);
         //cout << n << endl;
-        cout << "Fact: " << cS.top() << endl;
+        //cout << "Fact: " << cS.top() << endl;
+        for (int i = cS.top(); i > 0; i--) {
+            cout << "Fact: " << i << endl;
+        }
+        cout << endl;
         cS.pop();
         return x;
     }
