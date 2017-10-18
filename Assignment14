@@ -8,14 +8,15 @@ int factorial(int, stack<int>);
 int main () {
 
     int num, result;
-
-    num = 3;
+    
+    cout << "Enter a number: ";
+    cin >> num;
     
     stack<int> callStack;
 
     result = factorial(num, callStack);
     
-    cout << endl << result << endl;
+    cout << endl << "Result: " << result << endl;
 
     return 0;
 
