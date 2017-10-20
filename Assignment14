@@ -4,6 +4,7 @@
 using namespace std;
 
 int factorial(int, stack<int>);
+void printStack(int, stack<int>);
 
 int main () {
 
@@ -25,10 +26,7 @@ int main () {
 int factorial (int n, stack<int> cS) {
     //cout << n << endl;
     cS.push(n);
-    for (int i = cS.top(); i > 0; i--) {
-        cout << "Fact: " << i << endl;
-    }
-    cout << endl;
+    printStack(n, cS);
     //cout << "Fact: " << cS.top() << endl;
     if (n <= 1) {
         //cout << n << endl;
@@ -40,11 +38,20 @@ int factorial (int n, stack<int> cS) {
         int x = n * factorial(n-1, cS);
         //cout << n << endl;
         //cout << "Fact: " << cS.top() << endl;
-        for (int i = cS.top(); i > 0; i--) {
-            cout << "Fact: " << i << endl;
-        }
-        cout << endl;
+        printStack(n, cS);
         cS.pop();
         return x;
     }
+}
+
+void printStack(int n, stack<int> cS) {
+    int x = cS.top();
+    while (!cS.empty()) {
+        cout << cS.top() << endl;
+        cS.pop();
+    }
+    for (int i = x; x > 0; x--) {
+        cS.push(i);
+    }
+    cout << endl;
 }
