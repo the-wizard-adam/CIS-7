@@ -30,7 +30,7 @@ int factorial (int n, stack<int> cS) {
     //cout << "Fact: " << cS.top() << endl;
     if (n <= 1) {
         //cout << n << endl;
-        cout << "Fact: " << cS.top() << endl;
+        printStack(n, cS);
         cS.pop();
         return 1;
     }
@@ -47,7 +47,7 @@ int factorial (int n, stack<int> cS) {
 void printStack(int n, stack<int> cS) {
     int x = cS.top();
     while (!cS.empty()) {
-        cout << cS.top() << endl;
+        cout << "Fact: " << cS.top() << endl;
         cS.pop();
     }
     for (int i = x; x > 0; x--) {
