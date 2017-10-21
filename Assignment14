@@ -4,47 +4,40 @@
 using namespace std;
 
 int factorial(int, stack<int>);
-void printStack(int, stack<int>);
+void printStack(stack<int>);
 
 int main () {
-
-    int num, result;
+    int num, result;    
     
     cout << "Enter a number: ";
     cin >> num;
     
     stack<int> callStack;
-
+    
     result = factorial(num, callStack);
     
     cout << endl << "Result: " << result << endl;
-
+    
     return 0;
-
 }
 
 int factorial (int n, stack<int> cS) {
-    //cout << n << endl;
     cS.push(n);
-    printStack(n, cS);
-    //cout << "Fact: " << cS.top() << endl;
+    printStack(cS);
     if (n <= 1) {
-        //cout << n << endl;
-        printStack(n, cS);
+        printStack(cS);
         cS.pop();
         return 1;
     }
     else {
         int x = n * factorial(n-1, cS);
-        //cout << n << endl;
-        //cout << "Fact: " << cS.top() << endl;
-        printStack(n, cS);
+        printStack(cS);
         cS.pop();
         return x;
     }
 }
 
-void printStack(int n, stack<int> cS) {
+void printStack(stack<int> cS) {
     int x = cS.top();
     while (!cS.empty()) {
         cout << "Fact: " << cS.top() << endl;
