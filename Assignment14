@@ -4,7 +4,7 @@
 using namespace std;
 
 int factorial(int, stack<int>);
-int fib(int , stack<int>);
+int fib(int, int, stack<int>);
 void printStack(stack<int>);
 
 int main () {
@@ -17,7 +17,7 @@ int main () {
     
     cout << endl;
     //result = factorial(num, callStack);
-    result = fib(num, callStack);
+    result = fib(num, num, callStack);
     
     cout << endl << "Result: " << result << endl;
     
@@ -39,17 +39,14 @@ int factorial (int n, stack<int> cS) {
     }
 }
 
-int fib(int n, stack<int> cS) {
+int fib(int n, int m, stack<int> cS) {
     cS.push(n);
-    printStack(cS);
+    cout << "calling f(" << cS.top() << ") from f(" << m << ")" << endl;
     if (n <= 2) {
-        printStack(cS);
-        cS.pop();
         return 1;
     }
     else {
-        int x = (fib(n-1, cS) + fib(n-2, cS));
-        printStack(cS);
+        int x = (fib(n-1, n, cS) + fib(n-2, n, cS));
         return x;
     }
 }
