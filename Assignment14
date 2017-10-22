@@ -8,16 +8,27 @@ int fib(int, int, stack<int>);
 void printStack(stack<int>);
 
 int main () {
-    int num, result;    
+    int num, b, result;
+    stack<int> callStack;
     
     cout << "Enter a number: ";
     cin >> num;
     
-    stack<int> callStack;
-    
-    cout << endl;
-    //result = factorial(num, callStack);
-    result = fib(num, num, callStack);
+    do {
+        cout << "Enter 1 for FACTORIAL, 2 for FIBONACCI: ";
+        cin >> b;
+        if (b == 1) {
+            cout << endl;
+            result = factorial(num, callStack);
+        }
+        else if (b == 2) {
+            cout << endl;
+            result = fib(num, num, callStack);
+        }
+        else {
+            cout << "Invalid input." << endl;
+        }
+    } while(b != 1 && b != 2);
     
     cout << endl << "Result: " << result << endl;
     
@@ -64,3 +75,78 @@ void printStack(stack<int> cS) {
     cout << "=========" << endl;
     cout << endl;
 }
+
+/* OUTPUT
+Enter a number: 4
+Enter 1 for FACTORIAL, 2 for FIBONACCI: 1
+
+=========
+n = 4
+=========
+
+=========
+n = 3
+n = 4
+=========
+
+=========
+n = 2
+n = 3
+n = 4
+=========
+
+=========
+n = 1
+n = 2
+n = 3
+n = 4
+=========
+
+=========
+n = 1
+n = 2
+n = 3
+n = 4
+=========
+
+=========
+n = 2
+n = 3
+n = 4
+=========
+
+=========
+n = 3
+n = 4
+=========
+
+=========
+n = 4
+=========
+
+
+Result: 24
+
+-------------------------------------------------------------
+
+Enter a number: 6
+Enter 1 for FACTORIAL, 2 for FIBONACCI: 2
+
+calling f(6) from f(6)
+calling f(5) from f(6)
+calling f(4) from f(5)
+calling f(3) from f(4)
+calling f(2) from f(3)
+calling f(1) from f(3)
+calling f(2) from f(4)
+calling f(3) from f(5)
+calling f(2) from f(3)
+calling f(1) from f(3)
+calling f(4) from f(6)
+calling f(3) from f(4)
+calling f(2) from f(3)
+calling f(1) from f(3)
+calling f(2) from f(4)
+
+Result: 8
+*/
