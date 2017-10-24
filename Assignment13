@@ -89,5 +89,57 @@ void hanoi(int n, stack<int> a, stack<int> b, stack<int> c) {
    
 }*/
 
+/*#include <iostream>
+#include <stack>
+
+using namespace std;
+
+void hanoi(int, stack<int>, stack<int>, stack<int>);
+void print(stack<int>);
+
+int main () {
+    
+    int discNum;
+    
+    discNum = 3;
+    
+    stack<int> start, end, aux;
+
+    cout << "Bottom -->";
+    for (int i = 1; i <= discNum; i++) {
+        start.push(i);
+        cout << start.top();
+    }
+    cout << "<-- Top";
+    
+    cout << "\n\n";
+    print(start);
+    
+    return 0;
+}
+
+void print (stack<int> s) {
+    stack<int> x;
+    while (!s.empty()) {
+        cout << s.top();
+        x.push(s.top());
+        s.pop();
+    }
+    cout << "\n\n";
+    while (!x.empty()) {
+        s.push(x.top());
+        cout << s.top();
+        x.pop();
+    }
+    cout << "\n\n";
+    while (!s.empty()) {
+        cout << s.top();
+        x.push(s.top());
+        s.pop();
+    }
+}*/
+
+
+
 
 
