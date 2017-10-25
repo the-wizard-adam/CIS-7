@@ -6,11 +6,13 @@ using namespace std;
 void hanoi(int, stack<int>, stack<int>, stack<int>);
 void print(stack<int>, stack<int>, stack<int>);
 
+int count = 0;
+
 int main () {
     
     int discNum;
     
-    discNum = 1;
+    discNum = 3;
     
     stack<int> start, end, aux;
 
@@ -29,16 +31,20 @@ int main () {
 }
 
 void hanoi(int n, stack<int> s, stack<int> e, stack<int> a) {
-    if (n == 1) {
-        e.push(s.top());
-        s.pop();
-        print(s, e, a);
+    while (count != 10) {
+        count++;
+        if (n == 1) {
+            e.push(s.top());
+            s.pop();
+            print(s, e, a);
+        }
+        else {
+            hanoi(n-1, s, a, e);
+            hanoi(n, s, e, a);
+            hanoi(n-1, a, s, e);
+        }
     }
-    else {
-        hanoi(n-1, s, a, e);
-        hanoi(n, s, e, a);
-        hanoi(n-1, a, s, e);
-    }
+    cout << count;
 }
 
 void print (stack<int> s, stack<int> e, stack<int> a) {
