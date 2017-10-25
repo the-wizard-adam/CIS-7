@@ -1,96 +1,5 @@
 #include <iostream>
 #include <stack>
-//#include <vector>
-//#include <iterator>
-
-using namespace std;
-
-void hanoi(int, stack<int>, stack<int>, stack<int>);
-//void display(int, int[], int[], int[]);
-
-/*class Tower {
-        string name;
-        int numberOfDisks;
-    public:
-        Tower(string, int);
-        string disks[3] = {"-","-","-"};
-        void print() {
-            cout << name << "   ";
-            for(auto i = 0; i < numberOfDisks; i++)
-            {
-                cout << disks[i] << " ";
-            }
-        }
-    };
-
-Tower::Tower(string n, int disks) {
-    name = n;
-    numberOfDisks = disks;
-}*/
-
-int main()
-{
-    int discNum;
-    
-    cout << "Welcome to Towers of Hanoi 2017, please input an integer between 1 and 100: ";
-    do {
-        cin >> discNum;
-        if (discNum < 1 || discNum > 100) {
-            cout << "Invalid input. ";
-        }
-    } while(discNum < 1 || discNum > 100);
-    
-    stack<int> start, end, aux;
-
-    for (int i = discNum; i > 0; i--) {
-        start.push(i);
-    }
-    
-    hanoi(discNum, start, end, aux);
-
-    return 0;
-}
-
-void hanoi(int n, stack<int> a, stack<int> b, stack<int> c) {
-    if (n == 1) {
-        b.push(a.top());
-        a.pop();
-        
-        cout << "A: ";
-        while(!a.empty()) {
-            cout << a.top() << " ";
-            a.pop();
-        }
-        cout << endl;
-        
-        cout << "B: ";
-        while(!b.empty()) {
-            cout << b.top() << " ";
-            b.pop();
-        }
-        cout << endl;
-        
-        cout << "C: ";
-        while(!c.empty()) {
-            cout << c.top() << " ";
-            c.pop();
-        }
-    }
-    else {
-        hanoi(n-1, a, c, b);
-        b.push(a.top());
-        a.pop();
-        hanoi(n-1, b, a, c);
-    }
-    
-}
-
-/*void display(int n, int s[n], int e[n], int a[n]) {
-   
-}*/
-
-/*#include <iostream>
-#include <stack>
 
 using namespace std;
 
@@ -114,9 +23,13 @@ int main () {
         //cout << start.top();
     }
     
-    print(start, end, aux);
+    hanoi(n, start, end, aux);
     
     return 0;
+}
+
+void hanoi(n, stack<int> s, stack<int> e, stack<int> a) {
+    
 }
 
 void print (stack<int> s, stack<int> e, stack<int> a) {
@@ -154,14 +67,3 @@ void print (stack<int> s, stack<int> e, stack<int> a) {
         x.pop();
     }
 }
-
-
-
-
-
-*/
-
-
-
-
-
