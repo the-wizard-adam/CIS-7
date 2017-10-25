@@ -9,10 +9,40 @@ void addItem(vector<string>);
 void unionAB(vector<string>, vector<string>);
 void intersectAB(vector<string>, vector<string>);
 void subAB(vector<string>, vector<string>);
+void subBA(vector<string>, vector<string>);
+void crossAB(vector<string>, vector<string>);
+void powersetA(vector<string>, vector<string>);
+void powersetB(vector<string>, vector<string>);
 
 int main() {
     
     vector<string> A, B;
+    int choice;
+    
+    switch (choice) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+        case 8:
+            break;
+        case 9:
+            break;
+        default:
+            cout << "Error";
+            break;
+
+    }
     
     
     return 0;
