@@ -10,7 +10,7 @@ int main () {
     
     int discNum;
     
-    discNum = 3;
+    discNum = 1;
     
     stack<int> start, end, aux;
 
@@ -23,13 +23,18 @@ int main () {
         //cout << start.top();
     }
     
-    hanoi(n, start, end, aux);
+    hanoi(discNum, start, end, aux);
     
     return 0;
 }
 
-void hanoi(n, stack<int> s, stack<int> e, stack<int> a) {
-    
+void hanoi(int n, stack<int> s, stack<int> e, stack<int> a) {
+    //print(s, e, a);
+    if (n == 1) {
+        e.push(s.top());
+        s.pop();
+        print(s, e, a);
+    }
 }
 
 void print (stack<int> s, stack<int> e, stack<int> a) {
