@@ -16,11 +16,13 @@ void powersetB(vector<string>, vector<string>);
 
 int main() {
     
-    vector<string> A, B;
+    vector<string> A;
+    vector<string> B;
     int choice;
     
-    A.assign(1);
-    
+    A.push_back("1");
+    B.push_back("2");
+
     printSets(A, B);
     
     
@@ -58,9 +60,27 @@ void printSets(vector<string> a, vector<string> b) {
         cout << "";
     }
     else {
-        for (int i = a.size(); i > 0; i--) {
-            cout << a[i] << ",";
+        cout << "{";
+        for(auto element: a){
+            cout << element;
         }
+        cout << "}";
     }
-    cout << "}";
+    cout << "}\n";
+    
+    cout << "Set B = {";
+    if (b.empty() == true) {
+        cout << "";
+    }
+    else {
+        cout << "{";
+        for(auto element: b){
+            cout << element;
+        }
+        cout << "}";
+    }
+    cout << "}\n\n";
 }
+
+
+
