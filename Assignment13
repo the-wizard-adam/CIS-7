@@ -30,9 +30,9 @@ int main () {
 
 void hanoi(int n, stack<int> s, stack<int> e, stack<int> a) {
     if (n == 1) {
-        print(s, e, a);
         e.push(s.top());
         s.pop();
+        print(s, e, a);
     }
     else {
         hanoi(n-1, s, a, e);
