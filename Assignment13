@@ -24,29 +24,25 @@ int main () {
         start.push(i);
         //cout << start.top();
     }
-    
+       
     hanoi(discNum, start, end, aux);
-    
+
     return 0;
 }
 
 void hanoi(int n, stack<int> s, stack<int> e, stack<int> a) {
-    while (count != 10) {
-        count++;
-        if (n == 1) {
-            e.push(s.top());
-            s.pop();
-            print(s, e, a);
-        }
-        else {
-            hanoi(n-1, s, a, e);
-            e.push(s.top());
-            s.pop();
-            print(s, e, a);
-            hanoi(n-1, a, s, e);
-        }
+    if (n == 1) {
+        e.push(s.top());
+        s.pop();
+        print(s, e, a);
     }
-    cout << count;
+    else {
+        hanoi(n-1, s, a, e);
+        e.push(s.top());
+        s.pop();
+        print(s, e, a);
+        hanoi(n-1, a, s, e);
+    }
 }
 
 void print (stack<int> s, stack<int> e, stack<int> a) {
@@ -84,3 +80,4 @@ void print (stack<int> s, stack<int> e, stack<int> a) {
         x.pop();
     }
 }
+
