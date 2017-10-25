@@ -19,7 +19,12 @@ int main() {
     vector<string> A, B;
     int choice;
     
-    switch (choice) {
+    A.assign(1);
+    
+    printSets(A, B);
+    
+    
+    /*switch (choice) {
         case 1:
             break;
         case 2:
@@ -41,9 +46,21 @@ int main() {
         default:
             cout << "Error";
             break;
-
-    }
+    }*/
     
     
     return 0;
+}
+
+void printSets(vector<string> a, vector<string> b) {
+    cout << "Set A = {";
+    if (a.empty() == true) {
+        cout << "";
+    }
+    else {
+        for (int i = a.size(); i > 0; i--) {
+            cout << a[i] << ",";
+        }
+    }
+    cout << "}";
 }
