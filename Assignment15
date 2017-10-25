@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+void printSets(vector<string>, vector<string>);
+void addItem(vector<string>);
+void unionAB(vector<string>, vector<string>);
+void intersectAB(vector<string>, vector<string>);
+void subAB(vector<string>, vector<string>);
+
+int main() {
+    
+    vector<string> A, B;
+    
+    
+    return 0;
+}
