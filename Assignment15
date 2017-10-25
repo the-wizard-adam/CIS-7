@@ -21,8 +21,7 @@ int main() {
     string input;
     int choice;
     
-    switch (choice) {
-        printSets(A, B);
+    printSets(A, B);
         cout << "1 : Add Item to A\n"
              << "2 : Add Item to B\n"
              << "3 : A U B\n"
@@ -34,6 +33,9 @@ int main() {
              << "9 : Powerset of B\n\n";
              
         cin >> choice;
+    
+    switch (choice) {
+        
         
         case 1:
             break;
