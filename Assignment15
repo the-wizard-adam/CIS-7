@@ -19,6 +19,7 @@ int main() {
     
     vector<string> A;
     vector<string> B;
+    char cont;
     
     printSets(A, B);
     
@@ -52,7 +53,8 @@ int main() {
         }
         
         cout << "\n\nContinue? Y/N: ";
-        cin >>
+        cin >> cont;
+    } while(cont != 'n' || cont != 'N');
     
     
     return 0;
