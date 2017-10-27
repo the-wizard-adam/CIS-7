@@ -13,54 +13,47 @@ void subBA(vector<string>, vector<string>);
 void crossAB(vector<string>, vector<string>);
 void powersetA(vector<string>, vector<string>);
 void powersetB(vector<string>, vector<string>);
+char userChoice();
 
 int main() {
     
     vector<string> A;
     vector<string> B;
     string input;
-    int choice;
     
     printSets(A, B);
-        cout << "1 : Add Item to A\n"
-             << "2 : Add Item to B\n"
-             << "3 : A U B\n"
-             << "4 : A ^ B\n"
-             << "5 : A - B\n"
-             << "6 : B - A\n"
-             << "7 : A X B\n"
-             << "8 : Powerset of A\n"
-             << "9 : Powerset of B\n\n";
-             
-        cin >> choice;
     
-    switch (choice) {
+    do {
+        switch (userChoice()) {
+            
+            
+            case '1':
+                break;
+            case '2':
+                break;
+            case '3':
+                break;
+            case '4':
+                break;
+            case '5':
+                break;
+            case '6':
+                break;
+            case '7':
+                break;
+            case '8':
+                break;
+            case '9':
+                break;
+            case '0':
+                break;
+            default:
+                cout << "Error";
+                break;
+        }
         
-        
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        case 6:
-            break;
-        case 7:
-            break;
-        case 8:
-            break;
-        case 9:
-            break;
-        case 0:
-            break;
-        default:
-            cout << "Error";
-            break;
-    }
+        cout << "\n\nContinue? Y/N: ";
+        cin
     
     
     return 0;
@@ -92,6 +85,24 @@ void printSets(vector<string> a, vector<string> b) {
         cout << "}";
     }
     cout << "}\n\n";
+}
+
+char userChoice () {
+    char choice;
+    
+    cout << "1 : Add Item to A\n"
+         << "2 : Add Item to B\n"
+         << "3 : A U B\n"
+         << "4 : A ^ B\n"
+         << "5 : A - B\n"
+         << "6 : B - A\n"
+         << "7 : A X B\n"
+         << "8 : Powerset of A\n"
+         << "9 : Powerset of B\n\n";
+             
+    cin >> choice;
+    
+    return choice;
 }
 
 
