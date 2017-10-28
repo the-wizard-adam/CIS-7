@@ -26,11 +26,14 @@ int main() {
         printSets(A, B);
         switch (userChoice()) {
             case '1':
+                cout << "Add Item to A: ";
                 cin >> x;
                 A.push_back(x);
                 break;
             case '2':
-                
+                cout << "Add Item to B: ";
+                cin >> x;
+                B.push_back(x);
                 break;
             case '3':
                 break;
@@ -58,7 +61,7 @@ int main() {
             cout << "Continue? Y/N: ";
             cin >> cont;
             if (cont != 'n' && cont != 'N' && cont != 'y' && cont != 'Y') {
-                cout << "Error";
+                cout << "Error. ";
             }
         } while (cont != 'n' && cont != 'N' && cont != 'y' && cont != 'Y');
         cout << "\n";
