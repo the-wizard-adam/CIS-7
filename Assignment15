@@ -49,16 +49,15 @@ int main() {
                 cout << "Error";
                 break;
         }
-        
-        cout << "\n\nContinue? Y/N: ";
-        cin >> cont;
-        if (cont == 'n' || cont == 'N') {
-            return 0;
-        }
-        else 
+        do {
+            cout << "\n\nContinue? Y/N: ";
+            cin >> cont;
+            if (cont != 'n' && cont != 'N' && cont != 'y' && cont != 'Y') {
+                cout << "Error";
+            }
+        } while (cont != 'n' && cont != 'N' && cont != 'y' && cont != 'Y');
         cout << "\n";
     }
-    
     
     return 0;
 }
