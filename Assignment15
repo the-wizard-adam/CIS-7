@@ -5,7 +5,6 @@
 using namespace std;
 
 void printSets(vector<string>, vector<string>);
-void addItem(vector<string>);
 void unionAB(vector<string>, vector<string>);
 void intersectAB(vector<string>, vector<string>);
 void subAB(vector<string>, vector<string>);
@@ -36,6 +35,7 @@ int main() {
                 B.push_back(x);
                 break;
             case '3':
+                unionAB(A, B);
                 break;
             case '4':
                 break;
@@ -89,11 +89,11 @@ void printSets(vector<string> a, vector<string> b) {
         cout << "";
     }
     else {
-        cout << "{";
         for(auto element: b){
+            cout << "{";
             cout << element;
+            cout << "}";
         }
-        cout << "}";
     }
     cout << "}\n\n";
 }
@@ -116,10 +116,19 @@ char userChoice () {
     return choice;
 }
 
-//void addItem(vector<int> c) {
-//    string x;
-//    cin >> x;
-//    c.push_back(x);
-//}
+void unionAB(vector<string> a, vector<string> b) {
+    cout << "\nA U B: {";
+    for (auto element: a) {
+        cout << "{";
+        cout << element;
+        cout << "}";
+    }
+    for (auto element: b) {
+        cout << "{";
+        cout << element;
+        cout << "}";
+    }
+    cout << "}\n\n";
+}
 
 
