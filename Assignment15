@@ -20,14 +20,17 @@ int main() {
     vector<string> A;
     vector<string> B;
     char cont;
-    
-    printSets(A, B);
+    string x;
     
     while(cont != 'n' && cont != 'N') {
+        printSets(A, B);
         switch (userChoice()) {
             case '1':
+                cin >> x;
+                A.push_back(x);
                 break;
             case '2':
+                
                 break;
             case '3':
                 break;
@@ -49,8 +52,10 @@ int main() {
                 cout << "Error";
                 break;
         }
+        printSets(A, B);
+        cout << "\n\n";
         do {
-            cout << "\n\nContinue? Y/N: ";
+            cout << "Continue? Y/N: ";
             cin >> cont;
             if (cont != 'n' && cont != 'N' && cont != 'y' && cont != 'Y') {
                 cout << "Error";
@@ -68,11 +73,11 @@ void printSets(vector<string> a, vector<string> b) {
         cout << "";
     }
     else {
-        cout << "{";
         for(auto element: a){
+            cout << "{";
             cout << element;
+            cout << "}";
         }
-        cout << "}";
     }
     cout << "}\n";
     
@@ -108,5 +113,10 @@ char userChoice () {
     return choice;
 }
 
+//void addItem(vector<int> c) {
+//    string x;
+//    cin >> x;
+//    c.push_back(x);
+//}
 
 
