@@ -38,6 +38,7 @@ int main() {
                 unionAB(A, B);
                 break;
             case '4':
+                intersectAB(A, B);
                 break;
             case '5':
                 break;
@@ -129,6 +130,26 @@ void unionAB(vector<string> a, vector<string> b) {
         cout << "}";
     }
     cout << "}\n\n";
+}
+
+void intersectAB(vector<string> a, vector<string> b) {
+    cout << "\nA ^ B: {";
+    for (auto elementA: a) {
+        for (auto elementB: b) {
+            if (elementA == elementB) {
+                cout << "{";
+                cout << elementA;
+                cout << "}";
+            }
+        }
+    }
+    cout << "}\n\n";
+}
+
+void subAB(vector<string> a, vector<string> b) {
+    for (auto elementA: a) {
+        
+    }
 }
 
 
