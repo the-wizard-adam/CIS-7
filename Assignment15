@@ -7,8 +7,7 @@ using namespace std;
 void printSets(vector<string>, vector<string>);
 void unionAB(vector<string>, vector<string>);
 void intersectAB(vector<string>, vector<string>);
-void subAB(vector<string>, vector<string>);
-void subBA(vector<string>, vector<string>);
+void sub(vector<string>, vector<string>);
 void crossAB(vector<string>, vector<string>);
 void powersetA(vector<string>, vector<string>);
 void powersetB(vector<string>, vector<string>);
@@ -20,6 +19,10 @@ int main() {
     vector<string> B;
     char cont;
     string x;
+    
+    //DEBUG
+    A = {"1", "2", "3"};
+    B = {"2", "3", "4"};
     
     while(cont != 'n' && cont != 'N') {
         printSets(A, B);
@@ -41,16 +44,22 @@ int main() {
                 intersectAB(A, B);
                 break;
             case '5':
+                sub(A, B);
                 break;
             case '6':
+                sub(B, A);
                 break;
             case '7':
+                crossAB(A, B);
                 break;
             case '8':
+                
                 break;
             case '9':
+            
                 break;
             case '0':
+            
                 break;
             default:
                 cout << "Error";
@@ -120,14 +129,10 @@ char userChoice () {
 void unionAB(vector<string> a, vector<string> b) {
     cout << "\nA U B: {";
     for (auto element: a) {
-        cout << "{";
-        cout << element;
-        cout << "}";
+        cout << "{" << element << "}";
     }
     for (auto element: b) {
-        cout << "{";
-        cout << element;
-        cout << "}";
+        cout << "{" << element << "}";
     }
     cout << "}\n\n";
 }
@@ -137,19 +142,35 @@ void intersectAB(vector<string> a, vector<string> b) {
     for (auto elementA: a) {
         for (auto elementB: b) {
             if (elementA == elementB) {
-                cout << "{";
-                cout << elementA;
-                cout << "}";
+                cout << "{" << elementA << "}";
             }
         }
     }
     cout << "}\n\n";
 }
 
-void subAB(vector<string> a, vector<string> b) {
+void sub(vector<string> a, vector<string> b) {
+    cout << "\nA - B: {";
     for (auto elementA: a) {
-        
+        for (auto elementB: b) {
+            if (elementA != elementB) {
+                cout << "{" << elementA << "}";
+            }
+        }
     }
+    cout << "}\n\n";
+}
+
+void crossAB(vector<string> a, vector<string> b) {
+    cout << "\nA X B: {";
+    for (auto elementA: a) {
+        cout << "{(" << elementA << ")";
+        for (auto elementB: b) {
+            cout << "(" << elementB << ")";
+        }
+        cout << "}";
+    }
+    cout << "}\n\n";
 }
 
 
