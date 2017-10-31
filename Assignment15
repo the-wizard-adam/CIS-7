@@ -87,9 +87,7 @@ void printSets(vector<string> a, vector<string> b) {
     }
     else {
         for(auto element: a){
-            cout << "{";
-            cout << element;
-            cout << "}";
+            cout << "{" << element << "}";
         }
     }
     cout << "}\n";
@@ -100,9 +98,7 @@ void printSets(vector<string> a, vector<string> b) {
     }
     else {
         for(auto element: b){
-            cout << "{";
-            cout << element;
-            cout << "}";
+            cout << "{" << element << "}";
         }
     }
     cout << "}\n\n";
@@ -152,10 +148,14 @@ void intersectAB(vector<string> a, vector<string> b) {
 void sub(vector<string> a, vector<string> b) {
     cout << "\nA - B: {";
     for (auto elementA: a) {
+        bool isEqual = false;
         for (auto elementB: b) {
-            if (elementA != elementB) {
-                cout << "{" << elementA << "}";
+            if (elementA == elementB) {
+                isEqual = true;
             }
+        }
+        if (isEqual != true) {
+            cout << "{" << elementA << "}";
         }
     }
     cout << "}\n\n";
