@@ -44,10 +44,14 @@ int main() {
                 intersectAB(A, B);
                 break;
             case '5':
+                cout << "A - B: {";
                 sub(A, B);
+                cout << "}\n\n";
                 break;
             case '6':
+                cout << "B - A: {";
                 sub(B, A);
+                cout << "}\n\n";
                 break;
             case '7':
                 crossAB(A, B);
@@ -146,7 +150,6 @@ void intersectAB(vector<string> a, vector<string> b) {
 }
 
 void sub(vector<string> a, vector<string> b) {
-    cout << "\nA - B: {";
     for (auto elementA: a) {
         bool isEqual = false;
         for (auto elementB: b) {
@@ -158,7 +161,6 @@ void sub(vector<string> a, vector<string> b) {
             cout << "{" << elementA << "}";
         }
     }
-    cout << "}\n\n";
 }
 
 void crossAB(vector<string> a, vector<string> b) {
