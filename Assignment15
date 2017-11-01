@@ -17,14 +17,13 @@ int main() {
     
     vector<string> A;
     vector<string> B;
-    char cont;
     string x;
     
     //DEBUG
     A = {"1", "2", "3"};
     B = {"2", "3", "4"};
     
-    while(cont != 'n' && cont != 'N') {
+    while(true) {
         printSets(A, B);
         switch (userChoice()) {
             case '1':
