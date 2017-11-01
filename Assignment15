@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <math.h>
+#include <stdio.h>
 
 using namespace std;
 
@@ -9,8 +11,7 @@ void unionAB(vector<string>, vector<string>);
 void intersectAB(vector<string>, vector<string>);
 void sub(vector<string>, vector<string>);
 void crossAB(vector<string>, vector<string>);
-void powersetA(vector<string>, vector<string>);
-void powersetB(vector<string>, vector<string>);
+void powerset(vector<string>);
 char userChoice();
 
 int main() {
@@ -57,10 +58,12 @@ int main() {
                 crossAB(A, B);
                 break;
             case '8':
-                
+                cout << "Powerset of A: {";
+                powerset(A);
+                cout << "}\n\n";
                 break;
             case '9':
-            
+                powerset(B);
                 break;
             case '0':
             
@@ -174,4 +177,19 @@ void crossAB(vector<string> a, vector<string> b) {
     cout << "}\n\n";
 }
 
-
+void powerset(vector<string> c) {
+    int n = 0;
+    for (auto element: c) {
+        n++;
+    }
+    unsigned int pow_set_size = pow(2, n);
+    for (int i = 0; i < pow_set_size; i++) {
+        cout << "{";
+        for (int j = 0; j < n; j++) {
+            if (i & (1<<j)) {
+                cout << c[j];
+            }
+        }
+        cout << "}";
+    }
+}
