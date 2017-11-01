@@ -166,11 +166,10 @@ void sub(vector<string> a, vector<string> b) {
 void crossAB(vector<string> a, vector<string> b) {
     cout << "\nA X B: {";
     for (auto elementA: a) {
-        cout << "{(" << elementA << ")";
         for (auto elementB: b) {
-            cout << "(" << elementB << ")";
+            cout << "(" << elementA << ",";
+            cout << "" << elementB << ")";
         }
-        cout << "}";
     }
     cout << "}\n\n";
 }
