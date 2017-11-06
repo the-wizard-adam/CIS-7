@@ -1,0 +1,83 @@
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+void hanoi(int, stack<int>, stack<int>, stack<int>);
+void print(stack<int>, stack<int>, stack<int>);
+
+int count = 0;
+
+int main () {
+    
+    int discNum;
+    
+    discNum = 3;
+    
+    stack<int> start, end, aux;
+
+    /*for (int i = 1; i <= discNum; i++) {
+        start.push(i);
+        cout << start.top();
+    }*/
+    for (int i = discNum; i > 0; i--) {
+        start.push(i);
+        //cout << start.top();
+    }
+       
+    hanoi(discNum, start, end, aux);
+
+    return 0;
+}
+
+void hanoi(int n, stack<int> s, stack<int> e, stack<int> a) {
+    if (n == 1) {
+        e.push(s.top());
+        s.pop();
+        print(s, e, a);
+    }
+    else {
+        hanoi(n-1, s, a, e);
+        e.push(s.top());
+        s.pop();
+        print(s, e, a);
+        hanoi(n-1, a, s, e);
+    }
+}
+
+void print (stack<int> s, stack<int> e, stack<int> a) {
+    stack<int> x;
+    cout << "\n\nA:";
+    while (!s.empty()) {
+        x.push(s.top());
+        s.pop();
+    }
+    while (!x.empty()) {
+        s.push(x.top());
+        cout << " " << s.top();
+        x.pop();
+    }
+    
+    cout << "\nB:";
+    while (!e.empty()) {
+        x.push(e.top());
+        e.pop();
+    }
+    while (!x.empty()) {
+        e.push(x.top());
+        cout << " " << e.top();
+        x.pop();
+    }
+    
+    cout << "\nC:";
+    while (!a.empty()) {
+        x.push(a.top());
+        a.pop();
+    }
+    while (!x.empty()) {
+        a.push(x.top());
+        cout << " " << a.top();
+        x.pop();
+    }
+}
+
