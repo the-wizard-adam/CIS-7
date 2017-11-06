@@ -14,15 +14,15 @@
 
 
 
-			a. two nodes not adjacent = 2 & 4
-			b. node adjacent to itself = 5
-			c. loop = f
-			d. two parallel edges = c & d
-			e. degree of node 3 = 3
-			f. path of length 5 = 2 -> 1 -> 3 -> 4 -> 5 -> 5
-			g. cycle = 3 -> 4 -> 3
-			h. complete? = yes
-			i. connected? = yes
+			a. two nodes not adjacent = 	2 & 4
+			b. node adjacent to itself = 	5
+			c. loop = 			f
+			d. two parallel edges = 	c & d
+			e. degree of node 3 = 		3
+			f. path of length 5 = 		2 -> 1 -> 3 -> 4 -> 5 -> 5
+			g. cycle = 			3 -> 4 -> 3
+			h. complete? = 			yes
+			i. connected? = 		yes
 
 
 			      (1)
