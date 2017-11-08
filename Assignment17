@@ -2,11 +2,11 @@
 
 using namespace std;
 
-void addVertex();
-void addEdge(int, int);
-int highestDegree();
-int findIsoVert();
-int findLoops();
+void addVertex(int[][0]);
+void addEdge(int[][0]);
+int highestDegree(int[][0]);
+int findIsoVert(int[][0]);
+int findLoops(int[][0]);
 void displayMatrix(int[][0]);
 
 int main () {
@@ -30,10 +30,10 @@ int main () {
     while (true) {
         switch (input) {
             case '1':
-                //addVertex();
+                addVertex(matrix);
                 break;
             case '2':
-                //addEdge(int, int);
+                addEdge(matrix);
                 break;
             case '3':
                 return 0;
@@ -51,4 +51,24 @@ void displayMatrix(int m[][0]) {
         for (int j = 0; j < m.length(); j++) {
         }
     }*/
+}
+
+void addVertex(int m[][0]) {
+    
+}
+
+void addEdge(int m[][0]) {
+    
+}
+
+int highDeg(int m[][0]) {
+    return 0;
+}
+
+int findIsoVert(int m[][0]) {
+    return 0;
+}
+
+int findLoops(int m[][0]) {
+    return 0;
 }
