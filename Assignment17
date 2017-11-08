@@ -7,17 +7,19 @@ void addEdge(int, int);
 int highestDegree();
 int findIsoVert();
 int findLoops();
-void displayMenu();
+void displayMenu(int[][]);
 
 int main () {
     
     int matrix[][];
     
+    displayMenu(matrix);
+    
     
     return 0;
 }
 
-void displayMenu() {
+void displayMenu(int m[][]) {
     char input;
     
     cout << "Vertex with highest degree: " << endl;
@@ -28,17 +30,21 @@ void displayMenu() {
     
     cout << "1. Add Vertex" << endl;
     cout << "2. Add Edge" << endl;
+    cout << "3. QUIT:" << end;
     cout << "INPUT: ";
     cin >> input;
     
     switch (input) {
         case '1':
+            addVertex();
             break;
         case '2':
+            addEdge(int, int);
             break;
         case '3':
             return 0;
         default:
+        cout << "Error!";
             break;
     }
 }
