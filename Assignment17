@@ -11,12 +11,14 @@ void displayMenu();
 
 int main () {
     
+    int matrix[][];
     
     
     return 0;
 }
 
 void displayMenu() {
+    char input;
     
     cout << "Vertex with highest degree: " << endl;
     cout << "Isolated vertices: " << endl;
@@ -24,6 +26,19 @@ void displayMenu() {
     cout << "Connected: " << endl;
     cout << "Complete: "  << endl << endl;
     
-    switch
+    cout << "1. Add Vertex" << endl;
+    cout << "2. Add Edge" << endl;
+    cout << "INPUT: ";
+    cin >> input;
     
+    switch (input) {
+        case '1':
+            break;
+        case '2':
+            break;
+        case '3':
+            return 0;
+        default:
+            break;
+    }
 }
