@@ -1,1 +1,29 @@
+#include <iostream>
 
+using namespace std;
+
+void addVertex();
+void addEdge(int, int);
+int highestDegree();
+int findIsoVert();
+int findLoops();
+void displayMenu();
+
+int main () {
+    
+    
+    
+    return 0;
+}
+
+void displayMenu() {
+    
+    cout << "Vertex with highest degree: " << endl;
+    cout << "Isolated vertices: " << endl;
+    cout << "Loops : " << endl;
+    cout << "Connected: " << endl;
+    cout << "Complete: "  << endl << endl;
+    
+    switch
+    
+}
