@@ -2,18 +2,20 @@
 
 using namespace std;
 
-void addVertex(int[][0]);
+void addVertex(int[][]);
 void addEdge(int[][0]);
 int highestDegree(int[][0]);
 int findIsoVert(int[][0]);
 int findLoops(int[][0]);
-void displayMatrix(int[][0]);
+void displayMatrix(int[][]);
 
 int main () {
     
-    int matrix[][0] = {};
+    int vertices = 0;
+    int matrix[vertices][vertices];
     char input;
     
+    while (true) {
     displayMatrix(matrix);
     
     cout << "Vertex with highest degree: " << endl;
@@ -27,18 +29,18 @@ int main () {
     cout << "3. QUIT" << endl;
     cout << "INPUT: ";
     cin >> input;
-    while (true) {
+    
         switch (input) {
             case '1':
-                addVertex(matrix);
+                addVertex(matrix, vertices);
                 break;
             case '2':
-                addEdge(matrix);
+                //addEdge(matrix);
                 break;
             case '3':
                 return 0;
             default:
-            cout << "Error!";
+            cout << "Error!" << endl;
                 break;
         }
     }
@@ -46,15 +48,19 @@ int main () {
 }
 
 void displayMatrix(int m[][0]) {
-    cout << "[NULL]" << endl;
-    /*for (int i = 0; i < m.length(); i++){
-        for (int j = 0; j < m.length(); j++) {
+    //cout << "[NULL]" << endl;
+    /*for (int i = 0; i <= m.size(); i++){
+        for (int j = 0; j <= m.size(); j++) {
+            cout << "0" << endl;
         }
     }*/
 }
 
-void addVertex(int m[][0]) {
-    
+void addVertex(int m[][0], int v) {
+    v++;
+    for (int i = 0; i <= v; i++) {
+        m[i][i] = 0;
+    }
 }
 
 void addEdge(int m[][0]) {
