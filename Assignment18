@@ -35,5 +35,7 @@
 - [ ] Question #51
       The matrix is all 1's, except for the diagonal, which is all 0's.
 - [ ] Question #65
+      
 
 - [ ] Question #71
+      The adjacency matrix A' for G' is such that, except for the diagonal, each 0 in A is a 1 in A', and vice versa.
