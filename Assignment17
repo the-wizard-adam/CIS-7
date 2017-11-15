@@ -1,22 +1,25 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-void addVertex(int[][]);
-void addEdge(int[][0]);
-int highestDegree(int[][0]);
-int findIsoVert(int[][0]);
-int findLoops(int[][0]);
-void displayMatrix(int[][]);
+void addVertex(vector<vector<int>>, vector<int>);
+//void addEdge(int[][0]);
+//int highestDegree(int[][0]);
+//int findIsoVert(int[][0]);
+//int findLoops(int[][0]);
+void displayMatrix(vector<vector<int>>, vector<int>);
 
 int main () {
+    vector<int> row;
+    vector<vector<int>> matrix;
     
-    int vertices = 0;
-    int matrix[vertices][vertices];
+    //int vertices = 0;
+    //int matrix[vertices][vertices];
     char input;
     
     while (true) {
-    displayMatrix(matrix);
+    displayMatrix(matrix, row);
     
     cout << "Vertex with highest degree: " << endl;
     cout << "Isolated vertices: " << endl;
@@ -29,10 +32,11 @@ int main () {
     cout << "3. QUIT" << endl;
     cout << "INPUT: ";
     cin >> input;
+    cout << endl << endl;
     
         switch (input) {
             case '1':
-                addVertex(matrix, vertices);
+                addVertex(matrix, row);
                 break;
             case '2':
                 //addEdge(matrix);
@@ -47,23 +51,21 @@ int main () {
     return 0;
 }
 
-void displayMatrix(int m[][0]) {
-    //cout << "[NULL]" << endl;
-    /*for (int i = 0; i <= m.size(); i++){
-        for (int j = 0; j <= m.size(); j++) {
-            cout << "0" << endl;
+void displayMatrix(vector<vector<int>> m, vector<int> r) {
+    for (auto i: m) {
+        for (auto j: r) {
+            cout << j;
         }
-    }*/
-}
-
-void addVertex(int m[][0], int v) {
-    v++;
-    for (int i = 0; i <= v; i++) {
-        m[i][i] = 0;
+        cout << endl;
     }
 }
 
-void addEdge(int m[][0]) {
+void addVertex(vector<vector<int>> m, vector<int> r) {
+    r.push_back(0);
+    m.push_back(r);
+}
+
+/*void addEdge(int m[][0]) {
     
 }
 
@@ -77,4 +79,4 @@ int findIsoVert(int m[][0]) {
 
 int findLoops(int m[][0]) {
     return 0;
-}
+}*/
