@@ -1,25 +1,25 @@
+#include "stdafx.h"
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-void addVertex(vector<vector<int>>, vector<int>);
-//void addEdge(int[][0]);
+struct matrix {
+	vector<int> row, column;
+} adj;
+
+void addEdge(matrix);
 //int highestDegree(int[][0]);
 //int findIsoVert(int[][0]);
 //int findLoops(int[][0]);
-void displayMatrix(vector<vector<int>>, vector<int>);
+void displayMatrix(matrix);
+
 
 int main () {
-    vector<int> row;
-    vector<vector<int>> matrix;
-    
-    //int vertices = 0;
-    //int matrix[vertices][vertices];
     char input;
     
     while (true) {
-    displayMatrix(matrix, row);
+    displayMatrix(adj);
     
     cout << "Vertex with highest degree: " << endl;
     cout << "Isolated vertices: " << endl;
@@ -36,10 +36,11 @@ int main () {
     
         switch (input) {
             case '1':
-                addVertex(matrix, row);
+				adj.row.push_back(0);
+				adj.column.push_back(0);
                 break;
             case '2':
-                //addEdge(matrix);
+                addEdge(adj);
                 break;
             case '3':
                 return 0;
@@ -51,25 +52,27 @@ int main () {
     return 0;
 }
 
-void displayMatrix(vector<vector<int>> m, vector<int> r) {
-    for (auto i: m) {
-        for (auto j: r) {
-            cout << j;
-        }
-        cout << endl;
-    }
+void displayMatrix(matrix a) {
+	for (auto i: a.row) {
+		cout << "[";
+		for (auto j: a.column) {
+			cout << j << " ";
+		}
+		cout << "]" << endl;
+	}
 }
 
-void addVertex(vector<vector<int>> m, vector<int> r) {
-    r.push_back(0);
-    m.push_back(r);
+void addEdge(matrix a) {
+	int vert1, vert2;
+    cout << "Vertex 1: ";
+	cin >> vert1;
+	cout << "Vertex 2: ";
+	cin >> vert2;
+
+	
 }
 
-/*void addEdge(int m[][0]) {
-    
-}
-
-int highDeg(int m[][0]) {
+/*int highDeg(int m[][0]) {
     return 0;
 }
 
