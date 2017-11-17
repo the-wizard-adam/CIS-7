@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <iostream>
 #include <vector>
 
@@ -12,7 +12,7 @@ struct matrix {
 
 //void addVertex(matrix);
 void addEdge(matrix);
-//int highestDegree(int[][0]);
+int highDeg(matrix);
 //int findIsoVert(int[][0]);
 //int findLoops(int[][0]);
 void displayMatrix(matrix);
@@ -24,7 +24,7 @@ int main () {
     while (true) {
     displayMatrix(adj);
     
-    cout << "Vertex with highest degree: " << endl;
+    cout << "Vertex with highest degree: " << highDeg(adj) << endl;
     cout << "Isolated vertices: " << endl;
     cout << "Loops : " << endl;
     cout << "Connected: " << endl;
@@ -85,47 +85,32 @@ int main () {
 }
 
 void displayMatrix(matrix a) {
+    int ver = 0;
 	for (auto i: a.vecmat) {
-		cout << "[";
+		cout << ver << "[";
 		for (auto j: i) {
 			cout << j << " ";
 		}
 		cout << "]\n";
+		ver++;
 	}
 	cout << "\n";
 }
 
-/*void addVertex(matrix a) {
-	a.col++;
-	a.vecmat.clear();
-	a.row.clear();
-	for (int i = 0; i < a.col; i++){
-		a.row.push_back(0);
-	}
-	for (int i = 0; i < a.col; i++) {
-		a.vecmat.push_back(a.row);
-	}
-}*/
-
-void addEdge(matrix a) {
-	int vert1, vert2;
-    cout << "Vertex 1: ";
-	cin >> vert1;
-	cout << "Vertex 2: ";
-	cin >> vert2;
-
-	for (int i = 0; i < a.vecmat.size(); i++) {
-		if (i == vert1) {
-			for (int j = 0; j < a.vecmat.at(i).size(); j++) {
-				if (j == vert2) {
-					a.vecmat.at(i).at(j) = 1;
-				}
-			}
-		}
-	}
-}
-
-/*int highDeg(int m[][0]) {
+int highDeg(matrix a) {
+    int deg;
+    vector<int> degvec;
+    for (auto i: a.vecmat) {
+        for (auto j: i) {
+            deg+=j;
+        }
+        degvec.push_back(deg);
+    }
+    for (int i = 0; i < degvec.size(); i++) {
+        if (degvec[i] > degvec[i-1]) {
+            return degvec[i];
+        }
+    }
     return 0;
 }
 
@@ -135,4 +120,4 @@ int findIsoVert(int m[][0]) {
 
 int findLoops(int m[][0]) {
     return 0;
-}*/
+}
