@@ -39,40 +39,40 @@ int main () {
     
         switch (input) {
             case '1':
-		adj.rownum++;
-		adj.row.push_back(0);				
-		for (int i = 0; i < adj.rownum; i++) {
-			if (i != 0) {
-				adj.vecmat[i-1].push_back(0);
-			}
-		}
-		adj.vecmat.push_back(adj.row);
+        		adj.rownum++;
+        		adj.row.push_back(0);				
+        		for (int i = 0; i < adj.rownum; i++) {
+        			if (i != 0) {
+        				adj.vecmat[i-1].push_back(0);
+        			}
+        		}
+        		adj.vecmat.push_back(adj.row);
                 break;
             case '2':
-		int vert1, vert2;
-		cout << "Vertex 1: ";
-		cin >> vert1;
-		cout << "Vertex 2: ";
-		cin >> vert2;
-
-		for (int i = 0; i < adj.vecmat.size(); i++) {
-			if (i == vert1) {
-				for (int j = 0; j < adj.vecmat.at(i).size(); j++) {
-					if (j == vert2) {
-						adj.vecmat.at(i).at(j) = 1;
-					}
-				}
-			}
-		}
-		for (int i = 0; i < adj.vecmat.size(); i++) {
-			if (i == vert2) {
-				for (int j = 0; j < adj.vecmat.at(i).size(); j++) {
-					if (j == vert1) {
-						adj.vecmat.at(i).at(j) = 1;
-					}
-				}
-			}
-		}
+        		int vert1, vert2;
+        		cout << "Vertex 1: ";
+        		cin >> vert1;
+        		cout << "Vertex 2: ";
+        		cin >> vert2;
+        
+        		for (int i = 0; i < adj.vecmat.size(); i++) {
+        			if (i == vert1) {
+        				for (int j = 0; j < adj.vecmat.at(i).size(); j++) {
+        					if (j == vert2) {
+        						adj.vecmat.at(i).at(j) = 1;
+        					}
+        				}
+        			}
+        		}
+        		for (int i = 0; i < adj.vecmat.size(); i++) {
+        			if (i == vert2) {
+        				for (int j = 0; j < adj.vecmat.at(i).size(); j++) {
+        					if (j == vert1) {
+        						adj.vecmat.at(i).at(j) = 1;
+        					}
+        				}
+        			}
+        		}
                 break;
             case '3':
                 return 0;
@@ -86,8 +86,9 @@ int main () {
 
 void displayMatrix(matrix a) {
     int ver = 0;
+    cout << "\n";
 	for (auto i: a.vecmat) {
-		cout << ver << "[";
+		cout << "Vertex: " << ver << "[";
 		for (auto j: i) {
 			cout << j << " ";
 		}
@@ -107,8 +108,16 @@ int highDeg(matrix a) {
         degvec.push_back(deg);
     }
     for (int i = 0; i < degvec.size(); i++) {
+        if (i == 0) {
+            for (int j = 0; j < degvec.size(); j++) {
+                if (degvec[i] < degvec[j]) {}
+                else {
+                    return i;
+                }
+            }
+        }
         if (degvec[i] > degvec[i-1]) {
-            return degvec[i];
+            return i;
         }
     }
     return 0;
