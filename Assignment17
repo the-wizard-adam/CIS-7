@@ -5,9 +5,12 @@
 using namespace std;
 
 struct matrix {
-	vector<int> row, column;
+	int rownum;
+	vector<int> row;
+	vector<vector<int>> vecmat;
 } adj;
 
+//void addVertex(matrix);
 void addEdge(matrix);
 //int highestDegree(int[][0]);
 //int findIsoVert(int[][0]);
@@ -36,11 +39,31 @@ int main () {
     
         switch (input) {
             case '1':
-				adj.row.push_back(0);
-				adj.column.push_back(0);
+		adj.rownum++;
+		adj.row.push_back(0);				
+		for (int i = 0; i < adj.rownum; i++) {
+			if (i != 0) {
+				adj.vecmat[i-1].push_back(0);
+			}
+		}
+		adj.vecmat.push_back(adj.row);
                 break;
             case '2':
-                addEdge(adj);
+		int vert1, vert2;
+		cout << "Vertex 1: ";
+		cin >> vert1;
+		cout << "Vertex 2: ";
+		cin >> vert2;
+
+		for (int i = 0; i < adj.vecmat.size(); i++) {
+			if (i == vert1) {
+				for (int j = 0; j < adj.vecmat.at(i).size(); j++) {
+					if (j == vert2) {
+						adj.vecmat.at(i).at(j) = 1;
+					}
+				}
+			}
+		}
                 break;
             case '3':
                 return 0;
@@ -53,14 +76,27 @@ int main () {
 }
 
 void displayMatrix(matrix a) {
-	for (auto i: a.row) {
+	for (auto i: a.vecmat) {
 		cout << "[";
-		for (auto j: a.column) {
+		for (auto j: i) {
 			cout << j << " ";
 		}
-		cout << "]" << endl;
+		cout << "]\n";
 	}
+	cout << "\n";
 }
+
+/*void addVertex(matrix a) {
+	a.col++;
+	a.vecmat.clear();
+	a.row.clear();
+	for (int i = 0; i < a.col; i++){
+		a.row.push_back(0);
+	}
+	for (int i = 0; i < a.col; i++) {
+		a.vecmat.push_back(a.row);
+	}
+}*/
 
 void addEdge(matrix a) {
 	int vert1, vert2;
@@ -69,7 +105,15 @@ void addEdge(matrix a) {
 	cout << "Vertex 2: ";
 	cin >> vert2;
 
-	
+	for (int i = 0; i < a.vecmat.size(); i++) {
+		if (i == vert1) {
+			for (int j = 0; j < a.vecmat.at(i).size(); j++) {
+				if (j == vert2) {
+					a.vecmat.at(i).at(j) = 1;
+				}
+			}
+		}
+	}
 }
 
 /*int highDeg(int m[][0]) {
