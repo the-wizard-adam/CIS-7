@@ -108,7 +108,7 @@ int highDeg(matrix a) {
         degvec.push_back(deg);
     }
     for (int i = 0; i < degvec.size(); i++) {
-        if (i == 0) {
+        if (i != 0) {
             for (int j = 0; j < degvec.size(); j++) {
                 if (degvec[i] < degvec[j]) {}
                 else {
@@ -116,9 +116,14 @@ int highDeg(matrix a) {
                 }
             }
         }
-        if (degvec[i] > degvec[i-1]) {
-            return i;
-        }
+        else {
+            for (int j = 0; j < degvec.size(); j++) {
+                    if (degvec[i] < degvec[j]) {}
+                        else {
+                            return i;
+                        }
+                    }
+            }
     }
     return 0;
 }
