@@ -1,4 +1,4 @@
-//#include "stdafx.h"
+#include "stdafx.h"   //for use in Visual Studio Express
 #include <iostream>
 #include <vector>
 
@@ -6,6 +6,8 @@ using namespace std;
 
 struct matrix {
 	int rownum;
+	int deg;
+	vector<int> degvec;
 	vector<int> row;
 	vector<vector<int>> vecmat;
 } adj;
@@ -24,7 +26,7 @@ int main () {
     while (true) {
     displayMatrix(adj);
     
-    cout << "Vertex with highest degree: " << highDeg(adj) << endl;
+    cout << "Vertex with highest degree: " << endl;
     cout << "Isolated vertices: " << endl;
     cout << "Loops : " << endl;
     cout << "Connected: " << endl;
@@ -40,7 +42,8 @@ int main () {
         switch (input) {
             case '1':
         		adj.rownum++;
-        		adj.row.push_back(0);				
+        		adj.row.push_back(0);
+				adj.degvec.push_back(0);
         		for (int i = 0; i < adj.rownum; i++) {
         			if (i != 0) {
         				adj.vecmat[i-1].push_back(0);
@@ -54,25 +57,41 @@ int main () {
         		cin >> vert1;
         		cout << "Vertex 2: ";
         		cin >> vert2;
-        
-        		for (int i = 0; i < adj.vecmat.size(); i++) {
-        			if (i == vert1) {
-        				for (int j = 0; j < adj.vecmat.at(i).size(); j++) {
-        					if (j == vert2) {
-        						adj.vecmat.at(i).at(j) = 1;
+			
+				if (vert1 == vert2) {
+					for (int i = 0; i < adj.vecmat.size(); i++) {
+        				if (i == vert1) {
+        					for (int j = 0; j < adj.vecmat.at(i).size(); j++) {
+        						if (j == vert2) {
+        							adj.vecmat.at(i).at(j)+=2;
+									adj.degvec.at(i)+=2;
+        						}
         					}
         				}
         			}
-        		}
-        		for (int i = 0; i < adj.vecmat.size(); i++) {
-        			if (i == vert2) {
-        				for (int j = 0; j < adj.vecmat.at(i).size(); j++) {
-        					if (j == vert1) {
-        						adj.vecmat.at(i).at(j) = 1;
+				}
+				else {
+        			for (int i = 0; i < adj.vecmat.size(); i++) {
+        				if (i == vert1) {
+        					for (int j = 0; j < adj.vecmat.at(i).size(); j++) {
+        						if (j == vert2) {
+        							adj.vecmat.at(i).at(j)++;
+									adj.degvec.at(i)++;
+        						}
         					}
         				}
         			}
-        		}
+        			for (int i = 0; i < adj.vecmat.size(); i++) {
+        				if (i == vert2) {
+        					for (int j = 0; j < adj.vecmat.at(i).size(); j++) {
+        						if (j == vert1) {
+        							adj.vecmat.at(i).at(j)++;
+									adj.degvec.at(i)++;
+        						}
+        					}
+        				}
+        			}
+				}
                 break;
             case '3':
                 return 0;
@@ -92,16 +111,17 @@ void displayMatrix(matrix a) {
 		for (auto j: i) {
 			cout << j << " ";
 		}
-		cout << "]\n";
+		cout << "]" << "Degree: " << a.degvec.at(ver) << "\n";
 		ver++;
 	}
 	cout << "\n";
 }
 
 int highDeg(matrix a) {
-    int deg;
+    int deg = 0;
     vector<int> degvec;
     for (auto i: a.vecmat) {
+		deg = 0;
         for (auto j: i) {
             deg+=j;
         }
@@ -109,29 +129,27 @@ int highDeg(matrix a) {
     }
     for (int i = 0; i < degvec.size(); i++) {
         if (i != 0) {
-            for (int j = 0; j < degvec.size(); j++) {
-                if (degvec[i] < degvec[j]) {}
-                else {
-                    return i;
-                }
-            }
+           if (degvec[i] > degvec [i-1]) {
+			   return i;
+		   }
+		   else {}
         }
         else {
-            for (int j = 0; j < degvec.size(); j++) {
-                    if (degvec[i] < degvec[j]) {}
-                        else {
-                            return i;
-                        }
-                    }
-            }
-    }
+			for (int j = 0; j < degvec.size(); j++) {
+				if (degvec[i] <= degvec[j]) {}
+				else {
+					return i;
+				}
+			}
+		}
+	}
     return 0;
 }
 
-int findIsoVert(int m[][0]) {
+/*int findIsoVert(int m[][0]) {
     return 0;
 }
 
 int findLoops(int m[][0]) {
     return 0;
-}
+}*/
