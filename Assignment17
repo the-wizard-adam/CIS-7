@@ -6,30 +6,43 @@ using namespace std;
 
 struct matrix {
 	int rownum;
-	int deg;
+	int highdeg;
 	vector<int> degvec;
 	vector<int> row;
+	vector<int> loopvec;
 	vector<vector<int>> vecmat;
+	bool isConnected;
+	bool isComplete;
 } adj;
 
-//void addVertex(matrix);
 void addEdge(matrix);
-int highDeg(matrix);
-//int findIsoVert(int[][0]);
-//int findLoops(int[][0]);
+void highDeg(matrix);
+void findIsoVert(matrix);
+void findLoops(matrix);
 void displayMatrix(matrix);
-
+void isConnected(matrix);
 
 int main () {
     char input;
-    
+	adj.highdeg = 0;
+	adj.isConnected = false;
+	adj.isComplete = false;
+
     while (true) {
     displayMatrix(adj);
     
-    cout << "Vertex with highest degree: " << endl;
-    cout << "Isolated vertices: " << endl;
-    cout << "Loops : " << endl;
-    cout << "Connected: " << endl;
+	highDeg(adj);
+	cout << "Vertex with highest degree: " << adj.highdeg << endl;
+    cout << "Isolated vertices: ";
+	findIsoVert(adj);
+	cout << endl;
+    cout << "Loops : ";
+	for (auto i: adj.loopvec) {
+		cout << "(" << i << ") ";
+	}
+	cout << endl;
+	cout << "Connected: ";
+	isConnected(adj);
     cout << "Complete: "  << endl << endl;
     
     cout << "1. Add Vertex" << endl;
@@ -65,6 +78,7 @@ int main () {
         						if (j == vert2) {
         							adj.vecmat.at(i).at(j)+=2;
 									adj.degvec.at(i)+=2;
+									adj.loopvec.push_back(i);
         						}
         					}
         				}
@@ -117,39 +131,39 @@ void displayMatrix(matrix a) {
 	cout << "\n";
 }
 
-int highDeg(matrix a) {
-    int deg = 0;
-    vector<int> degvec;
-    for (auto i: a.vecmat) {
-		deg = 0;
-        for (auto j: i) {
-            deg+=j;
-        }
-        degvec.push_back(deg);
-    }
-    for (int i = 0; i < degvec.size(); i++) {
-        if (i != 0) {
-           if (degvec[i] > degvec [i-1]) {
-			   return i;
-		   }
-		   else {}
-        }
-        else {
-			for (int j = 0; j < degvec.size(); j++) {
-				if (degvec[i] <= degvec[j]) {}
-				else {
-					return i;
-				}
+void highDeg(matrix a) {
+	for (int i = 0; i < adj.degvec.size(); i++) {
+		if (adj.degvec[i] == 0) {}
+		else {
+			if (adj.degvec[i] > adj.degvec[adj.highdeg]) {
+				adj.highdeg = i;
 			}
 		}
 	}
-    return 0;
 }
 
-/*int findIsoVert(int m[][0]) {
-    return 0;
+void findIsoVert(matrix a) {
+	for (int i = 0; i < a.degvec.size(); i++) {
+		if (a.degvec[i] == 0) {
+			cout << "(" << i << ") ";
+		}
+	}
 }
 
-int findLoops(int m[][0]) {
-    return 0;
-}*/
+void isConnected(matrix a) {
+	for (auto i: a.degvec) {
+		if (i == 0) {
+			a.isConnected = false;
+		}
+		else {
+			a.isConnected = true;
+		}
+	}
+	if (a.isConnected == true) {
+		cout << "Yes";
+	}
+	else {
+		cout << "No";
+	}
+	cout << endl;
+}
