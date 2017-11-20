@@ -6,10 +6,20 @@ struct Node {
     string name;
     Node left;
     Node right;
-}tree;
+}node;
 
 int main() {
+    cout << "Number of nodes: " << endl;
+    cout << "Depth: " << endl;
+    cout << "Full? " << endl;
+    cout << "Complete?" << endl;
+    cout << "Preorder: " << endl;
+    cout << "Inorder: " << endl;
+    cout << "Postorder: " < endl << endl;
     
-    
+    cout << "1. Add left child: " << endl;
+    cout << "2. Add right child: " << endl;
+    cout << "3. QUIT" << endl;
+    cout << "INPUT: " << endl;
     
 }
