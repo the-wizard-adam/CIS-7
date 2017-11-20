@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+struct Node {
+    string name;
+    Node left;
+    Node right;
+}tree;
+
+int main() {
+    
+    
+    
+}
