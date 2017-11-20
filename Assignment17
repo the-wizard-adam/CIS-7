@@ -21,6 +21,7 @@ void findIsoVert(matrix);
 void findLoops(matrix);
 void displayMatrix(matrix);
 void isConnected(matrix);
+void isComplete(matrix);
 
 int main () {
     char input;
@@ -29,6 +30,8 @@ int main () {
 	adj.isComplete = false;
 
     while (true) {
+	cout << "=================================" << endl;
+	cout << "=================================" << endl;
     displayMatrix(adj);
     
 	highDeg(adj);
@@ -36,14 +39,22 @@ int main () {
     cout << "Isolated vertices: ";
 	findIsoVert(adj);
 	cout << endl;
-    cout << "Loops : ";
-	for (auto i: adj.loopvec) {
-		cout << "(" << i << ") ";
+    cout << "Loops: ";
+	if (adj.loopvec.empty() == true) {
+		cout << "None";
+	}
+	else
+	{
+		for (auto i: adj.loopvec) {
+			cout << "(" << i << ") ";
+		} 
 	}
 	cout << endl;
 	cout << "Connected: ";
 	isConnected(adj);
-    cout << "Complete: "  << endl << endl;
+    cout << "Complete: ";
+	isComplete(adj);
+	cout << endl;
     
     cout << "1. Add Vertex" << endl;
     cout << "2. Add Edge" << endl;
@@ -121,7 +132,7 @@ void displayMatrix(matrix a) {
     int ver = 0;
     cout << "\n";
 	for (auto i: a.vecmat) {
-		cout << "Vertex: " << ver << "[";
+		cout << "Vertex: " << ver << " [";
 		for (auto j: i) {
 			cout << j << " ";
 		}
@@ -143,10 +154,15 @@ void highDeg(matrix a) {
 }
 
 void findIsoVert(matrix a) {
+	bool noIso = true;
 	for (int i = 0; i < a.degvec.size(); i++) {
 		if (a.degvec[i] == 0) {
 			cout << "(" << i << ") ";
+			noIso = false;
 		}
+	}
+	if (noIso == true) {
+		cout << "None";
 	}
 }
 
@@ -160,6 +176,30 @@ void isConnected(matrix a) {
 		}
 	}
 	if (a.isConnected == true) {
+		cout << "Yes";
+	}
+	else {
+		cout << "No";
+	}
+	cout << endl;
+}
+
+void isComplete(matrix a) {
+	for (int i = 0; i < a.vecmat.size(); i++) {
+		for (int j = 0; j < a.vecmat.at(i).size(); j++) {
+			if (i == j) {}
+			else {
+				if (a.vecmat.at(i).at(j) == 0) {
+					a.isComplete = false;
+					break;
+				}
+				else {
+					a.isComplete = true;
+				}
+			}
+		}
+	}
+	if (a.isComplete == true) {
 		cout << "Yes";
 	}
 	else {
