@@ -16,10 +16,11 @@ struct TreeNode {
     }
 };
 
-void addNode(TreeNode *&parent, string n, vector<TreeNode*> nodes) {
-    TreeNode *child;
-    child = new TreeNode(n);
-    nodes.push_back(child);
+vector<TreeNode*> nodes;
+
+void addLeftNode(TreeNode *&parent, string n) {
+    parent->left = new TreeNode(n);
+    nodes.push_back(parent->left);
 }
 
 
@@ -27,7 +28,6 @@ int main() {
     char choice;
     string parentNode, newNode;
     TreeNode *root;
-    vector<TreeNode*> nodes;
     root = new TreeNode("root");
     nodes.push_back(root);
     
@@ -51,9 +51,8 @@ int main() {
                 cout << "Which node?" << endl;
                 for (auto node: nodes) {
                     cout << "\t" << node->nodeName << endl;
-                    cout << "INPUT: ";
-                    cin >> parentNode;
                 }
+                cout << "INPUT: ";
                 cin >> parentNode;
                 for (auto node: nodes) {
                     if (node->nodeName == parentNode) {
@@ -64,7 +63,7 @@ int main() {
                         else {
                             cout << "Name left child for " << node->nodeName << ":";
                             cin >> newNode;
-                            addNode(node->left, newNode, nodes);
+                            addLeftNode(node, newNode);
                         }
                     }
                     break;
