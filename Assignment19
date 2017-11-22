@@ -8,6 +8,7 @@ struct TreeNode {
     string nodeName;   
     TreeNode *left;
     TreeNode *right;
+    vector<TreeNode*> nodes;
     
     TreeNode (string n) {
         nodeName = n;
@@ -16,11 +17,15 @@ struct TreeNode {
     }
 };
 
+void addNode(TreeNode *&node, string n) {
+    node = new TreeNode(n);
+    nodes.push_back(node);
+}
+
 
 int main() {
     char choice;
     string parentNode, newNode;
-    vector<TreeNode*> nodes;
     TreeNode *root;
     root = new TreeNode("root");
     nodes.push_back(root);
@@ -48,13 +53,13 @@ int main() {
                 }
                 cin >> parentNode;
                 for (auto node: nodes) {
-                    if (node->name == parentNode) {
+                    if (node->nodeName == parentNode) {
                         if (node->left != NULL) {
                             cout << "error!" << endl;
                             break;
                         }
                         else {
-                            cout << "Name left child for " << node->name << ":";
+                            cout << "Name left child for " << node->nodeName << ":";
                             cin >> newNode;
                             addNode(node->left, newNode);
                         }
