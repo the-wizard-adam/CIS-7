@@ -1,33 +1,28 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 struct TreeNode {
-    char nodeName;   
+    string nodeName;   
     TreeNode *left;
     TreeNode *right;
     
-    TreeNode (char n) {
+    TreeNode (string n) {
         nodeName = n;
         left = NULL;
         right = NULL;
     }
 };
 
-void addLeftNode(TreeNode *&root, char newItem) {
-    if (root == NULL) {
-        root = new TreeNode(newItem);
-    }
-    else
-        addLeftNode(root->left, newItem);
-}
-
 
 int main() {
     char choice;
+    vector<TreeNode*> nodes;
     TreeNode *root;
-    root = new TreeNode('A');
+    root = new TreeNode("root");
+    nodes.push_back(root);
     
     while(true) {
         cout << "Number of nodes: " << endl;
@@ -46,10 +41,11 @@ int main() {
         
         switch(choice) {
             case '1':
-                char name;
-                cout << "Name: ";
-                cin >> name;
-                addLeftNode(root, name);
+                cout << "Which node?" << endl;
+                for (auto node: nodes) {
+                    cout << "\t" << node->nodeName;
+                }
+                cout << "\n\n";
                 break;
             case '2':
                 break;
