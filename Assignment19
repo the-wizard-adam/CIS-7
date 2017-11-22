@@ -19,6 +19,7 @@ struct TreeNode {
 
 int main() {
     char choice;
+    string parentNode, newNode;
     vector<TreeNode*> nodes;
     TreeNode *root;
     root = new TreeNode("root");
@@ -44,6 +45,21 @@ int main() {
                 cout << "Which node?" << endl;
                 for (auto node: nodes) {
                     cout << "\t" << node->nodeName;
+                }
+                cin >> parentNode;
+                for (auto node: nodes) {
+                    if (node->name == parentNode) {
+                        if (node->left != NULL) {
+                            cout << "error!" << endl;
+                            break;
+                        }
+                        else {
+                            cout << "Name left child for " << node->name << ":";
+                            cin >> newNode;
+                            addNode(node->left, newNode);
+                        }
+                    }
+                    break;
                 }
                 cout << "\n\n";
                 break;
