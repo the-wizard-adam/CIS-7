@@ -2,16 +2,19 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
 struct TreeNode {
-    string nodeName;   
+    string nodeName;
+	int nodeNum;
     TreeNode *left;
     TreeNode *right;
     
     TreeNode (string n) {
         nodeName = n;
+		nodeNum = NULL;
         left = NULL;
         right = NULL;
     }
@@ -20,16 +23,19 @@ struct TreeNode {
 vector<TreeNode*> nodes;
 int countNodes = 0;
 int treeDepth = 0;
+int leafCount = 0;
 
 void addLeftNode(TreeNode *&parent, string n) {
     parent->left = new TreeNode(n);
     nodes.push_back(parent->left);
+	parent->left->nodeNum = parent->nodeNum + 1;
 	countNodes++;
 }
 
 void addRightNode(TreeNode *&parent, string n) {
 	parent->right = new TreeNode(n);
 	nodes.push_back(parent->right);
+	parent->right->nodeNum = parent->nodeNum + 1;
 	countNodes++;
 }
 
@@ -52,6 +58,57 @@ void calcDepth(TreeNode *&root, int nodeDepth) {
 	}
 }
 
+void printTree(TreeNode* &root) {
+	cout << endl;
+	for (int i = 0; i < root->nodeNum; i++) {
+		cout << "  ";
+	}
+	cout << "`-";
+	cout << root->nodeName;
+	if (root->right == NULL) {
+		cout << endl;
+		for (int i = 0; i < (root->nodeNum+1); i++) {
+			cout << "  ";
+		}
+		cout << " -";
+		cout << root->nodeName << "_right:NULL";
+	}
+	else if (root->right != NULL) {
+		printTree(root->right);
+	}
+	if (root->left == NULL) {
+		cout << endl;
+		for (int i = 0; i < (root->nodeNum+1); i++) {
+			cout << "  ";
+		}
+		cout << " -";
+		cout << root->nodeName << "_left:NULL";
+	}
+	else if (root->left != NULL) {
+		printTree(root->left);
+	}
+}
+
+bool isFull (TreeNode* &root, int treeDepth) {
+	TreeNode *diver;
+	diver = root;
+	if (root->left == NULL && root->right == NULL && diver->nodeNum == treeDepth) {
+		leafCount++;
+	}
+	else {
+		if (root->left != NULL) {
+			isFull(root->left, treeDepth);
+		}
+		if (root->right != NULL) {
+			isFull(root->right, treeDepth);
+		} 
+	}
+	if (leafCount == (pow(2, treeDepth))) {
+		return true;
+	}
+	return false;
+}
+
 
 int main() {
     char choice;
@@ -59,15 +116,29 @@ int main() {
     TreeNode *root;
     root = new TreeNode("root");
     nodes.push_back(root);
+	root->nodeNum = 0;
 	countNodes++;
-	treeDepth++;
     
     while(true) {
-		int nodeDepth = 1;
+		int nodeDepth = 0;
 		calcDepth(root, nodeDepth);
+		nodeDepth = 0;
+		printTree(root);
+		cout << endl << endl;
         cout << "Number of nodes: " << countNodes << endl;
 		cout << "Depth: " << treeDepth << endl;
-        cout << "Full? " << endl;
+		leafCount = 0;
+		if (isFull(root, treeDepth) == true) {
+			cout << "Full? " << "Yes" << endl;
+		}
+		else {
+			cout << "Full? "<< "No" << endl;
+		}
+		/*cout << "DEBUG============" << endl;
+		cout << "treeDepth: " << treeDepth << endl;
+		cout << "2^(treeDepth): " << (pow(2, treeDepth)) << endl;
+		cout << "```````leafCount = " << leafCount << "``````````\n";
+		cout << "DEBUG============" << endl;*/
         cout << "Complete?" << endl;
         cout << "Preorder: " << endl;
         cout << "Inorder: " << endl;
