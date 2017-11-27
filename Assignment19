@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "stdafx.h"  //for use in visual studio express
 #include <iostream>
 #include <string>
 #include <vector>
@@ -64,7 +64,7 @@ void printTree(TreeNode* &root) {
 		cout << "  ";
 	}
 	cout << "`-";
-	cout << root->nodeName;
+	cout << "(" << root->nodeNum << ")" <<root->nodeName;
 	if (root->right == NULL) {
 		cout << endl;
 		for (int i = 0; i < (root->nodeNum+1); i++) {
@@ -92,23 +92,83 @@ void printTree(TreeNode* &root) {
 bool isFull (TreeNode* &root, int treeDepth) {
 	TreeNode *diver;
 	diver = root;
-	if (root->left == NULL && root->right == NULL && diver->nodeNum == treeDepth) {
-		leafCount++;
+	if (nodes.size() < 2) {
+		return false;
 	}
-	else {
-		if (root->left != NULL) {
-			isFull(root->left, treeDepth);
+	else
+	{
+		if (root->left == NULL && root->right == NULL && diver->nodeNum == treeDepth) {
+			leafCount++;
 		}
-		if (root->right != NULL) {
-			isFull(root->right, treeDepth);
+		else {
+			if (root->left != NULL) {
+				isFull(root->left, treeDepth);
+			}
+			if (root->right != NULL) {
+				isFull(root->right, treeDepth);
+			} 
+		}
+		if (leafCount == (pow(2, treeDepth))) {
+			return true;
 		} 
-	}
-	if (leafCount == (pow(2, treeDepth))) {
-		return true;
 	}
 	return false;
 }
 
+bool isComplete(TreeNode* &root) {
+	if (nodes.size() < 2) {
+		return false;
+	}
+	else {
+		if (root->left == NULL && root->right != NULL) {
+			return false;
+		}
+		else if (root->left != NULL) {
+			isComplete(root->left);
+		}
+		else if (root->right != NULL) {
+			isComplete(root->right);
+		}
+		else {
+			return true;
+		}
+	}
+}
+
+void preorder(TreeNode* &root) {
+	cout << root->nodeName;
+	cout << " -> ";
+	if (root->left != NULL) {
+		//cout << " -> ";
+		preorder(root->left);
+	}
+	if (root->right != NULL) {
+		//cout << " -> ";
+		preorder(root->right);
+	}
+}
+
+void inorder(TreeNode* &root) {
+	if (root->left != NULL){
+		inorder(root->left);
+	}
+	cout << root->nodeName;
+	cout << " -> ";
+	if (root->right != NULL) {
+		inorder(root->right);
+	}
+}
+
+void postorder(TreeNode* &root) {
+	if (root->left != NULL) {
+		postorder(root->left);
+	}
+	if (root->right != NULL) {
+		postorder(root->right);
+	}
+	cout << root->nodeName;
+	cout << " -> ";
+}
 
 int main() {
     char choice;
@@ -123,7 +183,9 @@ int main() {
 		int nodeDepth = 0;
 		calcDepth(root, nodeDepth);
 		nodeDepth = 0;
+		cout << "=========================================";
 		printTree(root);
+		cout << "\n=========================================";
 		cout << endl << endl;
         cout << "Number of nodes: " << countNodes << endl;
 		cout << "Depth: " << treeDepth << endl;
@@ -139,22 +201,33 @@ int main() {
 		cout << "2^(treeDepth): " << (pow(2, treeDepth)) << endl;
 		cout << "```````leafCount = " << leafCount << "``````````\n";
 		cout << "DEBUG============" << endl;*/
-        cout << "Complete?" << endl;
-        cout << "Preorder: " << endl;
-        cout << "Inorder: " << endl;
-        cout << "Postorder: " << endl << endl;
+        if (isComplete(root) == true) {
+			cout << "Complete? " << "Yes" << endl;
+		}
+		else {
+			cout << "Complete? "<< "No" << endl;
+		}
+        cout << "Preorder: ";
+		preorder(root);
+		cout << endl;
+        cout << "Inorder: ";
+		inorder(root);
+		cout << endl;
+        cout << "Postorder: "; 
+		postorder(root);
+		cout << endl << endl;
         
         cout << "1. Add left child: " << endl;
         cout << "2. Add right child: " << endl;
         cout << "3. QUIT" << endl;
-        cout << "INPUT: " << endl;
+        cout << "INPUT: ";
         cin >> choice;
         
         switch(choice) {
             case '1':
                 cout << "Which node?" << endl;
                 for (auto node: nodes) {
-                    cout << "\t" << node->nodeName << endl;
+					cout << "\t" << node->nodeName << endl;
                 }
                 cout << "INPUT: ";
                 cin >> parentNode;
@@ -177,25 +250,25 @@ int main() {
                 cout << "\n\n";
                 break;
             case '2':
-				cout << "Which node?" << endl;
+		cout << "Which node?" << endl;
                 for (auto node: nodes) {
-                    cout << "\t" << node->nodeName << endl;
+			cout << "\t" << node->nodeName << endl;
                 }
                 cout << "INPUT: ";
                 cin >> parentNode;
                 for (auto node: nodes) {
                     if (node->nodeName == parentNode) {
                         if (node->right != NULL) {
-							cout << "==========================" << endl;
+			    cout << "==========================" << endl;
                             cout << "error: node->right != NULL" << endl;
-							cout << "==========================" << endl;
+			    cout << "==========================" << endl;
                             break;
                         }
                         else {
                             cout << "Name right child for " << node->nodeName << ": ";
                             cin >> newNode;
                             addRightNode(node, newNode);
-							break;
+			break;
                         }
                     }
                 }
